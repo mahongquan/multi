@@ -4,6 +4,7 @@ import { createLogger } from 'redux-logger'
 import api from '../middleware/api'
 import rootReducer from '../reducers'
 import DevTools from '../containers/DevTools'
+console.log(createLogger);
 
 const configureStore = preloadedState => {
   const store = createStore(

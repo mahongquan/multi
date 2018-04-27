@@ -5,7 +5,6 @@ import AppToDo from './todos';
 import App2 from './App2';
 import AppParts from './parts/App_bootstrap';
 import Mobx1 from './mobx1/index';
-//import RealWorld from './realworld';
 import {Router,Redirect, BrowserRouter,Route,Switch, Link} from 'react-router-dom'
 //import configureStore from './store/configure';
 import createHashHistory from "history/createHashHistory";
@@ -23,9 +22,6 @@ export default class Root extends Component<Props> {
                 <Route path="/todos" component={AppToDo} />
                 <Route path="/parts" component={AppParts} />
                 <Route path="/mobx1" component={Mobx1} />
-                {
-                  //<Route path="/realworld" component={RealWorld} />
-                }
                 <Redirect exact path="/"  to="/app2" />
            </Switch>
         </Router>
