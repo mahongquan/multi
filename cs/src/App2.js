@@ -8,7 +8,6 @@ export default class Root extends Component<Props> {
             <Link style={{paddingLeft:"10px"}} to="/parts">parts</Link>
             <Link style={{paddingLeft:"10px"}}  to="/mobx1">mobx1</Link>
             <Link style={{paddingLeft:"10px"}}  to="/todos">todos</Link>
-            <Link style={{paddingLeft:"10px"}}  to="/realworld">real world</Link>
             <Link style={{paddingLeft:"10px"}}  to="/g2048">2048</Link>
             <Link style={{paddingLeft:"10px"}}  to="/mu">materialui</Link>
         </div>

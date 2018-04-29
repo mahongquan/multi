@@ -27,9 +27,6 @@ export default class Root extends Component<Props> {
                 <Route path="/mu" component={Parts_mu} />
                 <Route path="/g2048" component={G2048} />
                 <Route path="/mobx1" component={Mobx1} />
-                {
-                  //<Route path="/realworld" component={RealWorld} />
-                }
                 <Redirect exact path="/"  to="/app2" />
            </Switch>
         </Router>

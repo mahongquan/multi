@@ -1987,6 +1987,7 @@ class App extends React.Component {
   }
   constructor(){
     super();
+    socket.init();
    var m1=moment();
    m1.subtract(1,"years");
    var m2=moment();
