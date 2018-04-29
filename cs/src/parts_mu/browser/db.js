@@ -1,4 +1,3 @@
-console.log("load db.js");
 let db;
 function myDateStr(date) {
     var year = date.getFullYear();
@@ -11,12 +10,10 @@ function myDateStr(date) {
     return year + "-" + s_month + "-" + s_day ;
 }
 var socket={
-  init:function(argument) {
+  init:function(){
     var sqlite3 = require('sqlite3').verbose();
-    const path = require('path')
-    var app_root=path.resolve(".");
-    db = new sqlite3.Database(app_root+'/cs/data.db');
-    // body...
+    const path=require("path");
+    db = new sqlite3.Database(__dirname+'/data.sqlite');
   },
   importstandard:function(res){
     console.log(res);
@@ -33,42 +30,22 @@ var socket={
         ;
     else
         data.start=0
-    if (url=="/folder"){
-        console.log(data);
-        const modalPath = path.join(__dirname, './');
-          // Open a local file in the default app
-        console.log(modalPath);
-        console.log(shell);
-        if (fs.existsSync(modalPath)){
-        }
-        else{
-            fs.mkdirSync(modalPath);
-        }
-        shell.openItem(modalPath);
-    }
-    else if (url=="/fs/children"){
-      console.log(data);
-      callback(children(data.path));
-    }
-    else if (url=="/fs/parent"){
-      console.log(data);
-      callback(parent(data.path));
-    }
-    else if (url=="/get/Contact"){
-      	var where=" where 2>1"
-      	if (data.search)
-        {
-      		where+=" and  SampleName like '%"+data.search+"%'";
-        }
-        where+=" and  SampleId between '"+data.begin+"' and '"+data.end+"'";
-        console.log(where);
-        
+    if (url=="/get/Contact"){
+    	var where=" where 2>1"
+      if (data.search)
+      {
+          where+=" and  hetongbh like '%"+data.search+"%'";
+       }
+    	if (data.baoxiang){
+    		where+=" and  baoxiang like '%"+data.baoxiang+"%'";
+      }
         db.serialize(function(){
             var res={};
-            db.all("SELECT count(*) as total FROM result"+where, function(err, row) {
+            db.all("SELECT count(*) as total FROM parts_contact"+where, function(err, row) {
+              console.log(err);
                 res.total=row[0].total;
             });
-            db.all("SELECT * FROM result"+where+" ORDER BY sampleid DESC limit "+data.limit+" offset "+data.start, function(err, row) {
+            db.all("SELECT * FROM parts_contact"+where+" ORDER BY yujifahuo_date DESC limit "+data.limit+" offset "+data.start, function(err, row) {
                  res.error=err;
                  res.data=row;
                  callback(res);
