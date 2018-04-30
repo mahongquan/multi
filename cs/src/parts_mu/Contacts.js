@@ -8,7 +8,7 @@ import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Ta
 import Client from './Client';
 import DialogExampleSimple from "./DialogExampleSimple"
 import DialogImportStandard from "./DialogImportStandard"
-import ContactEdit from "./ContactEdit"
+import ContactEdit from "./ContactEdit2New"
 import update from 'immutability-helper';
 import image from './logo.svg';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
@@ -21,16 +21,23 @@ import Select from 'material-ui/Select';
 import { observable } from "mobx";//, action, computed
 import { observer } from "mobx-react";
 import DropDown from './DropDown';
-class ItemStore {
-    @observable todos = [];
+import RichTextEditor from 'react-rte';
+var moment = require('moment');
+
+class ContactStore {
+    @observable contacts = [];
     @observable start=0;
     @observable total=0;
     @observable showModal=false;
-    @observable packitem={};
+    @observable contact={};
     @observable bg={};
+    @observable index=null;
     @observable search="";
     @observable start_input=1;
     @observable baoxiang="";
+    //edit 
+    @observable rich=RichTextEditor.createEmptyValue();
+    @observable editRich=false;
     limit=5;
     old={};
     constructor(){
@@ -46,7 +53,7 @@ class ItemStore {
               data
               ,(res)=>{
                 console.log(res);
-                this.todos=res.data;
+                this.contacts=res.data;
                 this.total=res.total;
                 this.start=data.start;
               }
@@ -107,7 +114,7 @@ class App extends Component {
   }
   constructor(){
     super();
-    this.store = new ItemStore();    
+    this.store = new ContactStore();    
   }
   componentDidMount=() => {
     this.loaddata();
@@ -196,25 +203,37 @@ class App extends Component {
   handleEdit=(idx)=>{
     //myredux.ItemActionCreators.showEdit(idx);
     this.store.showModal=true;
-    this.store.packitem=this.store.todos[idx];
-    this.store.old=this.store.packitem;
+    this.store.index=idx;
+    this.store.contact=this.store.contacts[idx];
     this.store.bg={};
+    if (this.store.index==null){
+      this.store.old={
+        yujifahuo_date:moment().format("YYYY-MM-DD"),
+        tiaoshi_date:moment().format("YYYY-MM-DD"),
+        addr:"",
+        channels:"",
+        baoxiang:"",
+        hetongbh:"",
+        shenhe:"",
+        yonghu:"",
+        yiqibh:"",
+        yiqixinghao:""
+      };
+      this.store.hiddenPacks=true;
+    }
+    else{
+      this.store.old=this.store.contact;
+      this.store.hiddenPacks=false;
+    }
+    this.store.old.dianqi=this.store.old.dianqi || "";
+    this.store.old.jixie=this.store.old.jixie || "";
+    this.store.old.redao=this.store.old.redao || "";
+    this.store.old.hongwai=this.store.old.hongwai || "";
+    this.store.old.channels=this.store.old.channels || "";
+    this.store.old.detail=this.store.old.detail || "";
+    this.store.old.addr=this.store.old.addr || "";
+    //var val1=RichTextEditor.createValueFromString(this.store.old.detail,"html");
   }
-
-  onLoginSubmit= (data) => {
-    console.log(data);
-    Client.login(data.username, data.password, (res) => {
-      if (res.success) {
-        this.setState({
-          logined: true,
-        });
-        this.setState({
-          user: data.username
-        });
-        this.handleUserChange(this.state.user);
-      }
-    });
-  };
   inputChange=(e)=>{
     console.log(this.refs.input);
     console.log(this.refs.style);
@@ -234,11 +253,21 @@ class App extends Component {
     this.loaddata();
   }
   render() {
-    const contactRows = this.store.todos.map((contact, idx) => (
+    const contactRows = this.store.contacts.map((contact, idx) => (
       <TableRow      key={idx}      onClick={() => this.oncontactClick(idx)}>
         <TableCell>{contact.id}</TableCell>
         <TableCell>{contact.hetongbh}</TableCell>
         <TableCell>{contact.yonghu}</TableCell>
+        <TableCell><a onClick={()=>{this.handleEdit(idx);}}>{contact.yiqibh}</a>
+          <DropDown title={this.store.baoxiang}>
+            <MenuItem  onClick={()=>{
+              this.onSelectBaoxiang("马红权");
+            }}>马红权</MenuItem>
+            <MenuItem    onClick={()=>{
+              this.onSelectBaoxiang("吴振宁");
+            }}>吴振宁</MenuItem>
+          </DropDown>
+        </TableCell>
         <TableCell>{contact.baoxiang}</TableCell>
         <TableCell>{contact.yiqixinghao}</TableCell>
       </TableRow>
@@ -271,12 +300,12 @@ var hasprev=true;
     const { anchorEl } = this.state;
     return (
     <MuiThemeProvider theme={theme}>
+      <ContactEdit store={this.store}/>
       <div className="App">
         <Toolbar>
            <TextField type="text" value={this.store.search}  placeholder="" onChange={this.handleSearchChange} />
            <Button id="id_bt_search" onClick={this.search}>搜索</Button>
            <DialogImportStandard title="导入标样" disabled={this.state.logined}  onLoginSubmit={this.onLoginSubmit} />
-           <ContactEdit  title="新仪器"/>
            <Button   variant="raised" onClick={this.handleTest}>test</Button>
         </Toolbar>
         <Table>
@@ -285,6 +314,7 @@ var hasprev=true;
         <TableCell>id</TableCell>
         <TableCell>合同编号</TableCell>
         <TableCell>用户单位</TableCell>
+        <TableCell>bh</TableCell>
         <TableCell>包箱
           <DropDown title={this.store.baoxiang}>
             <MenuItem  onClick={()=>{
