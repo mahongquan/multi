@@ -273,7 +273,6 @@ export default class Root extends Component<Props> {
        <div>
         <Items store={this.store} />
         <ItemEdit store={this.store} />
-        <Link to="/">HOME</Link>
       </div>
     );
   }

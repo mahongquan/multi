@@ -416,7 +416,6 @@ class App extends Component {
 <input maxLength="6" size="6" onChange={this.handlePageChange} value={this.state.start_input} />
 <button id="page_go"  className="btn btn-info" onClick={this.jump}>跳转</button>
 <div style={{minHeight:"200px"}}></div>
-<Link to="/">HOME</Link>
   </div>
     );
   }

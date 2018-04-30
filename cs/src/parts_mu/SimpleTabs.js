@@ -1,12 +1,9 @@
-import {withRouter, Link} from 'react-router-dom';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import Typography from 'material-ui/Typography';
-import Contacts from './Contacts';
-import DropDownExample from './DropDownExample';
 
 function TabContainer(props) {
   return (
@@ -22,7 +19,7 @@ TabContainer.propTypes = {
 
 const styles = theme => ({
   root: {
-    width:"1000px",
+    flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
   },
 });
@@ -43,14 +40,14 @@ class SimpleTabs extends React.Component {
     return (
       <div className={classes.root}>
         <AppBar position="static">
-          <Tabs fullWidth value={value} onChange={this.handleChange}>
-            <Tab label="contacts" />
-            <Tab label="DropDown" />
+          <Tabs value={value} onChange={this.handleChange}>
+            <Tab label="Item One" />
+            <Tab label="Item Two" />
             <Tab label="Item Three"/>
           </Tabs>
         </AppBar>
-        {value === 0 && <TabContainer><Contacts /></TabContainer>}
-        {value === 1 && <TabContainer><DropDownExample /></TabContainer>}
+        {value === 0 && <TabContainer>Item One</TabContainer>}
+        {value === 1 && <TabContainer>Item Two</TabContainer>}
         {value === 2 && <TabContainer>Item Three</TabContainer>}
       </div>
     );

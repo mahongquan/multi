@@ -6,16 +6,21 @@ import App2 from './App2';
 import AppParts from './parts/App_bootstrap';
 import Parts_mu from './parts_mu/App_mu';
 import Mobx1 from './mobx1/index';
-import G2048 from './2048/index';
-//import RealWorld from './realworld';
+import G2048 from './2048/2048';
 import {Router,Redirect, BrowserRouter,Route,Switch, Link} from 'react-router-dom'
-//import configureStore from './store/configure';
+var { ipcRenderer } =require("electron");//
 import createHashHistory from "history/createHashHistory";
 const history = createHashHistory({
   hashType: "slash" // the default
 })
-//const store = configureStore();
 export default class Root extends Component<Props> {
+  constructor(){
+    super();
+    ipcRenderer.on("goback", ()=>{
+        console.log(history);
+        history.goBack();
+    });
+  }
   render() {
     return (
         <Router  history={history}>

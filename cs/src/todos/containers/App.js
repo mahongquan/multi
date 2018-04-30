@@ -9,7 +9,6 @@ import {Link} from 'react-router-dom';
 
 const App = ({todos, actions}) => (
   <div>
-    <Link  to="/">HOME</Link>
     <Header addTodo={actions.addTodo} />
     <MainSection todos={todos} actions={actions} />
   </div>

@@ -37,8 +37,42 @@ const createWindow = () => {
     height: 600,
 
   });
-
-
+  //menu
+  const template=
+    [{
+      label: 'File',
+      submenu: [
+        {
+          label: 'New Window',
+          accelerator: 'Ctrl+N',
+          click: () =>{createWindow()},
+        },
+        {
+          label: 'HOME',
+          accelerator: 'Ctrl+H',
+          click: (item, win) =>{win.loadURL(`file://${__dirname}/src/index.html`);},
+        },
+        {
+          label: 'BACK',
+          accelerator: 'Ctrl+B',
+          click: (item, win) =>{
+            win.webContents.send("goback");
+          },
+        },
+        {
+          label: 'Exit',
+          accelerator: 'Ctrl+E',
+          click: (item, win) =>{
+             // console.log(win);
+             // console.log(mainWindow);
+             win.close();
+          },
+        }
+        ]
+    }];
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
+  //
   const devMode = (process.argv || []).indexOf('--local') !== -1;
   if (devMode) {
       mainWindow.openDevTools();
