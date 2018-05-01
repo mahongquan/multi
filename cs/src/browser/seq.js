@@ -9,7 +9,7 @@ class socket{
         funcs[url](data,callback);
     }
 }
-socket.init=()=>{
+socket.init=(callback)=>{
 models.sequelize.sync().then(
 	function () {
 			socket.on('/post/standard', function( data, callback ) {
@@ -487,6 +487,7 @@ models.sequelize.sync().then(
 					players[socket.id].room = tableId;
 				}
 			});
+			callback();
 
 	}
 ).catch(err=>{

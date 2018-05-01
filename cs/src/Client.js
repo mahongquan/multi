@@ -1,5 +1,4 @@
 var socket=require("./browser/seq");
-socket.init();
 function getRaw(url,cb) {
   socket.emit("/get"+url,{},cb);
 }
@@ -48,5 +47,5 @@ function logout( cb) {
 }
 function login(username,password,cb) {
 }
-const Client = {put,getRaw,contacts,items,login_index,login,logout,UsePacks,PackItems,get,post,postOrPut,delete1,postForm};
+const Client = {socket,put,getRaw,contacts,items,login_index,login,logout,UsePacks,PackItems,get,post,postOrPut,delete1,postForm};
 export default Client;
