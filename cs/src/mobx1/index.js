@@ -4,31 +4,32 @@ import ReactDOM from 'react-dom';
 import { observable,useStrict,action } from "mobx";//, action, computed
 import { observer } from "mobx-react";
 import {Modal,Table} from "react-bootstrap";
-//import update from 'immutability-helper';
+import  immutable from 'immutable';
 import Client from '../Client';
 useStrict(false);
 
 class ItemStore {
-    @observable todos = [];
+    @observable todos = immutable.List();
     @observable start=0;
     @observable total=0;
     @observable showModal=false;
-    @observable packitem={};
-    @observable bg={};
+    @observable packitem=immutable.Map();
+    @observable bg=immutable.Map();
     @observable search="";
     @observable start_input=1;
     limit=10;
     old={};
     constructor(){
-      this.loaddata({search:this.search,start:this.start,limit:this.limit});
+      this.loaddata();
     }
-    @action loaddata=(data)=>{
+    @action loaddata=()=>{
+        var data={search:this.search,start:this.start,limit:this.limit}
         console.log(data);
             Client.items(
               data
               ,(res)=>{
                 console.log(res);
-                this.todos=res.data;
+                this.todos=immutable.List(res.data);
                 this.total=res.total;
                 this.start=data.start;
               }
@@ -38,7 +39,7 @@ class ItemStore {
       var url="/rest/Item";
       Client.postOrPut(url,this.packitem,(res) => {
         console.log(res);
-          this.packitem=res.data;
+          this.packitem=immutable.Map(res.data);
           this.old=res.data;
           this.showModal=false;
       });
@@ -47,12 +48,12 @@ class ItemStore {
       console.log("change");
       if(this.old[e.target.name]===e.target.value)
       {
-        this.bg[e.target.name]="#ffffff"
+        this.bg.set(e.target.name,"#ffffff")
       }
       else{
-        this.bg[e.target.name]="#8888ff"
+        this.bg.set(e.target.name,"#8888ff")
       }
-      this.packitem[e.target.name]=e.target.value;
+      this.packitem.set(e.target.name,e.target.value);
     }
 }
 @observer
@@ -69,6 +70,7 @@ class ItemEdit extends Component{
   }
   render=()=>{
     console.log("render==========");
+    console.log(this.props);
     return (
         <Modal show={this.props.store.showModal} onHide={this.close}>
           <Modal.Header closeButton>
@@ -82,14 +84,19 @@ class ItemEdit extends Component{
                     ID:
                 </td>
                 <td >
-                    <input type="text" id="id" name="id" readOnly="true"  disabled="disabled"    defaultValue={this.props.store.packitem.id} />
+                    <input type="text" id="id"
+                     name="id" readOnly="true"
+                     disabled="disabled"    
+                     defaultValue={this.props.store.packitem.id} />
                 </td>
             </tr><tr>
                 <td>
                     名称:
                 </td>
                 <td>
-                    <input  style={{"backgroundColor":this.props.store.bg.name}}  type="text" id="name" name="name" value={this.props.store.packitem.name} onChange={this.handleChange} />
+                    <input  style={{"backgroundColor":this.props.store.bg.name}}  
+                    type="text" id="name" name="name" 
+                    value={this.props.store.packitem.name} onChange={this.handleChange} />
                 </td>
             </tr><tr>
                 <td>
@@ -105,7 +112,9 @@ class ItemEdit extends Component{
                     <label>编号:</label>
                 </td>
                 <td>
-                    <input style={{"backgroundColor":this.props.store.bg.bh}} type="text" id="bh" name="bh" value={this.props.store.packitem.bh}  onChange={this.handleChange} />
+                    <input style={{"backgroundColor":this.props.store.bg.bh}}
+                     type="text" id="bh" name="bh" 
+                     value={this.props.store.packitem.bh}  onChange={this.handleChange} />
                 </td>
             </tr>
            
@@ -114,8 +123,11 @@ class ItemEdit extends Component{
                     <label>单位:</label>
                 </td>
                 <td>
-                    <input type="text" style={{"backgroundColor":this.props.store.bg.danwei}}
-                    id="danwei" name="danwei"  value={this.props.store.packitem.danwei} onChange={this.handleChange} />
+                    <input type="text" 
+                    style={{"backgroundColor":this.props.store.bg.danwei}}
+                    id="danwei" name="danwei"  
+                    value={this.props.store.packitem.danwei} 
+                    onChange={this.handleChange} />
                 </td>
             </tr> 
             </tbody>
@@ -190,8 +202,9 @@ class Items extends Component {
   handleEdit=(idx)=>{
     //myredux.ItemActionCreators.showEdit(idx);
     this.props.store.showModal=true;
-    this.props.store.packitem=this.props.store.todos[idx];
-    this.props.store.old=this.props.store.packitem;
+    var tmp=this.props.store.todos.get(idx);
+    this.props.store.packitem=tmp;
+    this.props.store.old=tmp;
     this.props.store.bg={};
   }
   mapfunc=(contact, idx) => {

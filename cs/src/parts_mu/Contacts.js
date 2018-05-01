@@ -22,15 +22,16 @@ import { observable,useStrict,action } from "mobx";//, action, computed
 import { observer } from "mobx-react";
 import DropDown from './DropDown';
 import RichTextEditor from 'react-rte';
+import  immutable from 'immutable';
 var moment = require('moment');
-useStrict(true);
+useStrict(false);
 class ContactStore {
-    @observable contacts = [];
+    @observable contacts = immutable.List();
     @observable start=0;
     @observable total=0;
     @observable showModal=false;
-    @observable contact={};
-    @observable bg={};
+    @observable contact=immutable.Map();
+    @observable bg=immutable.Map();
     @observable index=null;
     @observable search="";
     @observable start_input=1;
@@ -53,7 +54,7 @@ class ContactStore {
               data
               ,(res)=>{
                 console.log(res);
-                this.contacts=res.data;
+                this.contacts=immutable.List(res.data);
                 this.total=res.total;
                 this.start=data.start;
               }
@@ -63,7 +64,7 @@ class ContactStore {
       var url="/rest/Contact";
       Client.postOrPut(url,this.packitem,(res) => {
         console.log(res);
-          this.packitem=res.data;
+          this.packitem=immutable.Map(res.data);
           this.old=res.data;
           this.showModal=false;
       });
@@ -73,12 +74,16 @@ class ContactStore {
     console.log(e.target.value)
     if(this.old[e.target.name]===e.target.value)
     {
-      this.bg[e.target.name]="#ffffff";
+      const bg2=this.bg.set(e.target.name,"#ffffff");
+      this.bg=bg2;
     }
     else{
-      this.bg[e.target.name]="#8888ff";
+      this.bg=this.bg.set(e.target.name,"#8888ff");
     }
-    this.contact[e.target.name]=e.target.value;
+    var r=this.contact[e.target.name]=e.target.value;
+    console.log(this.contact);
+    console.log(r)
+
   }
    @action  handleItemChange=(e)=>{
       console.log("change");
@@ -216,8 +221,8 @@ class App extends Component {
     //myredux.ItemActionCreators.showEdit(idx);
     this.store.showModal=true;
     this.store.index=idx;
-    this.store.contact=this.store.contacts[idx];
-    this.store.bg={};
+    this.store.contact=this.store.contacts.get(idx);
+    this.store.bg=immutable.Map();
     if (this.store.index==null){
       this.store.old={
         yujifahuo_date:moment().format("YYYY-MM-DD"),
