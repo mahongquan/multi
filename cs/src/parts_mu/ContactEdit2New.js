@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import UsePacks2 from "./UsePacks2";
 import { Modal} from "react-bootstrap";
 import update from 'immutability-helper';
-import Client from './Client';
+import Client from '../Client';
 import Autosuggest from 'react-autosuggest';
 import RichTextEditor from 'react-rte';
 import { observable } from "mobx";//, action, computed
@@ -124,16 +124,7 @@ export default class ContactEdit2New  extends Component{
       }
       this.props.store.contact.yiqixinghao=item;
   }
-  handleChange=(e)=>{
-    if(this.props.store.old[e.target.name]===e.target.value)
-    {
-      this.props.store.bg[e.target.name]="#ffffff";
-    }
-    else{
-      this.props.store.bg[e.target.name]="#8888ff";
-    }
-    this.props.store.contact[e.target.name]=e.target.value;
-  }
+  
   matchStateToTerm=(state, value)=>{
      return      state.toLowerCase().indexOf(value.toLowerCase()) !== -1 ;
   }
@@ -163,14 +154,19 @@ export default class ContactEdit2New  extends Component{
                     <label>用户单位:</label>
                 </td>
                 <td>
-                    <input style={{"backgroundColor":this.props.store.bg.yonghu}}  type="text" id="yonghu" name="yonghu" value={this.props.store.contact.yonghu} onChange={this.handleChange} />
+                    <input style={{"backgroundColor":this.props.store.bg.yonghu}}
+                      type="text" id="yonghu" name="yonghu" 
+                      value={this.props.store.contact.yonghu} 
+                      onChange={this.props.store.handleChange} />
                 </td>
             </tr><tr>
                 <td>
                     客户地址:
                 </td>
                 <td>
-                    <input  style={{"backgroundColor":this.props.store.bg.addr}}  type="text" id="addr" name="addr" value={this.props.store.contact.addr} onChange={this.handleChange} />
+                    <input  style={{"backgroundColor":this.props.store.bg.addr}}  
+                    type="text" id="addr" name="addr" value={this.props.store.contact.addr} 
+                    onChange={this.props.store.handleChange} />
                 </td>
                 <td>
                     通道配置:
@@ -245,20 +241,20 @@ export default class ContactEdit2New  extends Component{
                     <label>仪器编号:</label>
                 </td>
                 <td>
-                    <input  style={{"backgroundColor":this.props.store.bg.yiqibh}}  type="text" id="yiqibh" name="yiqibh" value={this.props.store.contact.yiqibh}  onChange={this.handleChange} />
+                    <input  style={{"backgroundColor":this.props.store.bg.yiqibh}}  type="text" id="yiqibh" name="yiqibh" value={this.props.store.contact.yiqibh}  onChange={this.props.store.handleChange} />
                 </td>
             </tr><tr>
                 <td>
                     <label>包箱:</label>
                 </td>
                 <td>
-                    <input style={{"backgroundColor":this.props.store.bg.baoxiang}} type="text" id="baoxiang" name="baoxiang" value={this.props.store.contact.baoxiang}  onChange={this.handleChange} />
+                    <input style={{"backgroundColor":this.props.store.bg.baoxiang}} type="text" id="baoxiang" name="baoxiang" value={this.props.store.contact.baoxiang}  onChange={this.props.store.handleChange} />
                 </td>
                 <td>
                     审核:
                 </td>
                 <td>
-                    <input style={{"backgroundColor":this.props.store.bg.shenhe}} type="text" id="shenhe" name="shenhe" value={this.props.store.contact.shenhe}  onChange={this.handleChange} />
+                    <input style={{"backgroundColor":this.props.store.bg.shenhe}} type="text" id="shenhe" name="shenhe" value={this.props.store.contact.shenhe}  onChange={this.props.store.handleChange} />
                 </td>
             </tr><tr>
                 <td>
@@ -291,7 +287,7 @@ export default class ContactEdit2New  extends Component{
                     <label>合同编号:</label>
                 </td>
                 <td>
-                    <input  style={{"backgroundColor":this.props.store.bg.hetongbh}}  type="text" id="hetongbh" name="hetongbh" value={this.props.store.contact.hetongbh}  onChange={this.handleChange} />
+                    <input  style={{"backgroundColor":this.props.store.bg.hetongbh}}  type="text" id="hetongbh" name="hetongbh" value={this.props.store.contact.hetongbh}  onChange={this.props.store.handleChange} />
                 </td>
                 <td>
                     方法:
@@ -312,8 +308,9 @@ export default class ContactEdit2New  extends Component{
                 </td>
                 <td>
                     <input  style={{"backgroundColor":this.props.store.bg.dianqi}}
-                      type="text" name="dianqi" value={this.props.store.contact.dianqi}  
-                      onChange={this.handleChange} />
+                      type="text" name="dianqi" 
+                      value={this.props.store.contact.dianqi}  
+                      onChange={this.props.store.handleChange} />
                 </td>
                 <td>
                     机械:
@@ -330,7 +327,7 @@ export default class ContactEdit2New  extends Component{
                 </td>
                 <td>
                     <input  style={{"backgroundColor":this.props.store.bg.hongwai}}  type="text"  
-                    name="hongwai" value={this.props.store.contact.hongwai}  onChange={this.handleChange} />
+                    name="hongwai" value={this.props.store.contact.hongwai}  onChange={this.props.store.handleChange} />
                 </td>
                 <td>
                     热导:

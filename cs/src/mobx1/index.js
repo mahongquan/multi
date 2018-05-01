@@ -1,11 +1,12 @@
 import {withRouter, Link} from 'react-router-dom';
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import { observable } from "mobx";//, action, computed
+import { observable,useStrict,action } from "mobx";//, action, computed
 import { observer } from "mobx-react";
 import {Modal,Table} from "react-bootstrap";
 //import update from 'immutability-helper';
-import Client from './Client';
+import Client from '../Client';
+useStrict(false);
 
 class ItemStore {
     @observable todos = [];
@@ -19,9 +20,9 @@ class ItemStore {
     limit=10;
     old={};
     constructor(){
-      this.loaddata({query:this.search,start:this.start,limit:this.limit});
+      this.loaddata({search:this.search,start:this.start,limit:this.limit});
     }
-    loaddata=(data)=>{
+    @action loaddata=(data)=>{
         console.log(data);
             Client.items(
               data
@@ -33,7 +34,7 @@ class ItemStore {
               }
             );
     }
-    handleItemSave=(data)=>{
+    @action handleItemSave=(data)=>{
       var url="/rest/Item";
       Client.postOrPut(url,this.packitem,(res) => {
         console.log(res);
@@ -42,7 +43,7 @@ class ItemStore {
           this.showModal=false;
       });
     }
-    handleItemChange=(e)=>{
+    @action handleItemChange=(e)=>{
       console.log("change");
       if(this.old[e.target.name]===e.target.value)
       {
@@ -140,7 +141,7 @@ class Items extends Component {
   }
   loaddata=()=>{
       this.props.store.loaddata({
-           query:this.props.store.search,
+           search:this.props.store.search,
            start:this.props.store.start,
            limit:this.props.store.limit
       });

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Client from './Client';
+import Client from '../Client';
 import {Table} from "react-bootstrap";
 import UsePackEditNew from "./UsePackEditNew";
 import Autosuggest from 'react-autosuggest';

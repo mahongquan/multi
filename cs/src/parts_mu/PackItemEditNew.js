@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Modal} from "react-bootstrap";
 import update from 'immutability-helper';
-import Client from './Client';
+import Client from '../Client';
 class PackItemEditNew extends Component{
   state={ 
       showModal: false,

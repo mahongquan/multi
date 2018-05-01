@@ -1,4 +1,4 @@
-var socket=require("./browser/db");
+var socket=require("./browser/seq");
 socket.init();
 function getRaw(url,cb) {
   socket.emit("/get"+url,{},cb);
@@ -36,11 +36,11 @@ function UsePacks(query, cb) {
   console.log(query);
   socket.emit("/get/UsePack",{contact_id:query},cb)
 }
-function PackItems(query, cb) {
-  socket.emit("/get/PackItem",{pack_id:query,limit:200},cb)
+function PackItems(data, cb) {
+  socket.emit("/get/PackItem",data,cb)
 }
-function items(query, cb) {
-  socket.emit("/get/Item",{search:query},cb)
+function items(data, cb) {
+  socket.emit("/get/Item",data,cb)
 }
 function login_index( cb) {
 }

@@ -4,4 +4,5 @@ window.myremote={
     electron:require('electron'),
 };
 require("babel-register");
+require("babel-polyfill");
 require("./index_local.js");

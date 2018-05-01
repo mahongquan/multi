@@ -5,7 +5,7 @@ import Menu, { MenuItem } from 'material-ui/Menu';
 import TextField from 'material-ui/TextField';
 import Toolbar from 'material-ui/Toolbar';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
-import Client from './Client';
+import Client from '../Client';
 import DialogExampleSimple from "./DialogExampleSimple"
 import DialogImportStandard from "./DialogImportStandard"
 import ContactEdit from "./ContactEdit2New"
@@ -18,12 +18,12 @@ import { withStyles } from 'material-ui/styles';
 import Input, { InputLabel } from 'material-ui/Input';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import Select from 'material-ui/Select';
-import { observable } from "mobx";//, action, computed
+import { observable,useStrict,action } from "mobx";//, action, computed
 import { observer } from "mobx-react";
 import DropDown from './DropDown';
 import RichTextEditor from 'react-rte';
 var moment = require('moment');
-
+useStrict(true);
 class ContactStore {
     @observable contacts = [];
     @observable start=0;
@@ -43,7 +43,7 @@ class ContactStore {
     constructor(){
       this.loaddata();
     }
-    loaddata=()=>{
+    @action loaddata=()=>{
       var data={search:this.search
         ,start:this.start
         ,baoxiang:this.baoxiang
@@ -59,7 +59,7 @@ class ContactStore {
               }
             );
     }
-    handleItemSave=(data)=>{
+    @action handleItemSave=(data)=>{
       var url="/rest/Contact";
       Client.postOrPut(url,this.packitem,(res) => {
         console.log(res);
@@ -68,7 +68,19 @@ class ContactStore {
           this.showModal=false;
       });
     }
-    handleItemChange=(e)=>{
+  @action handleChange=(e)=>{
+    console.log(e.target.name)
+    console.log(e.target.value)
+    if(this.old[e.target.name]===e.target.value)
+    {
+      this.bg[e.target.name]="#ffffff";
+    }
+    else{
+      this.bg[e.target.name]="#8888ff";
+    }
+    this.contact[e.target.name]=e.target.value;
+  }
+   @action  handleItemChange=(e)=>{
       console.log("change");
       if(this.old[e.target.name]===e.target.value)
       {
