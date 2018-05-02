@@ -42,7 +42,9 @@ class ContactStore {
     limit=5;
     old={};
     constructor(){
-      this.loaddata();
+      Client.socket.init(()=>{
+        this.loaddata();
+      })
     }
     @action loaddata=()=>{
       var data={search:this.search
