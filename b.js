@@ -1,3 +1,3 @@
 require("babel-register");
 require("babel-polyfill");
-require("./m2.js");
+require("./s1.js");

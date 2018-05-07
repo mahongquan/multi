@@ -22,8 +22,20 @@ let safeExit = false;
 // be closed automatically when the JavaScript object is garbage collected.
 
 let mainWindow;
-
-
+const devMode = (process.argv || []).indexOf('--dev') !== -1;
+const localMode = (process.argv || []).indexOf('--local') !== -1;
+let entryBasePath;
+  if(localMode){//local mode
+    entryBasePath =  'file://${__dirname}/src/index.html';  
+  }
+  else{         //devMode  productionMode
+    if(devMode){
+      entryBasePath = 'http://localhost:3000';
+    }
+    else{
+      entryBasePath =  'file://${__dirname}/build/index.html';     
+    }
+  }
 
 const createWindow = () => {
   console.log("createWindow");
@@ -50,7 +62,7 @@ const createWindow = () => {
         {
           label: 'HOME',
           accelerator: 'Ctrl+H',
-          click: (item, win) =>{win.loadURL(`file://${__dirname}/src/index.html`);},
+          click: (item, win) =>{win.loadURL(entryBasePath);},
         },
         {
           label: 'BACK',
@@ -73,13 +85,12 @@ const createWindow = () => {
   const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
   //
-  const devMode = (process.argv || []).indexOf('--local') !== -1;
-  if (devMode) {
+  if (devMode || localMode) {
       mainWindow.openDevTools();
   }
   // and load the index.html of the app.
 
-  mainWindow.loadURL(`file://${__dirname}/src/index.html`);
+  mainWindow.loadURL(entryBasePath);
 
 
 
