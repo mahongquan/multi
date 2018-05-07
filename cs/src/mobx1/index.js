@@ -20,7 +20,9 @@ class ItemStore {
     limit=10;
     old={};
     constructor(){
-      this.loaddata();
+      Client.socket.init(()=>{
+        this.loaddata();
+      })
     }
     @action loaddata=()=>{
         var data={search:this.search,start:this.start,limit:this.limit}
