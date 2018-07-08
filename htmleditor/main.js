@@ -23,7 +23,9 @@ let safeExit = false;
 
 let mainWindow;
 
-
+ipcMain.on('getpath', (event, arg) => {
+    event.returnValue = process.argv[1];
+})
 
 const createWindow = () => {
   console.log("createWindow");
@@ -59,6 +61,14 @@ const createWindow = () => {
             win.webContents.send("goback");
           },
         },
+        {
+          label: 'SAVE',
+          accelerator: 'Ctrl+S',
+          click: (item, win) =>{
+            win.webContents.send("save");
+          },
+        },
+
         {
           label: 'DevTools',
           accelerator: 'Ctrl+D',

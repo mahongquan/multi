@@ -1,0 +1,20 @@
+    td{ 
+      padding: 3px 3px 3px 3px; 
+    }
+    #page{ 
+      padding: 5px 5px 5px 5px;
+     /* background-color:green;*/
+    }
+    .contact_delete{margin:1px 20px 1px 1px;}
+    /*.contact_usepack{margin:1px 20px 1px 1px;}*/
+    .contact_zxd{margin:1px 20px 1px 1px;}
+    .contact_zs{margin:1px 20px 1px 1px;}
+    thead tr{ font-weight:bold;}
+    .table_input{background-color:green;}
+.ui-widget-overlay
+{
+  opacity: .50 !important; /* Make sure to change both of these, as IE only sees the second one */
+  filter: Alpha(Opacity=50) !important;
+
+  background-color: rgb(50, 50, 50) !important; /* This will make it darker */
+}

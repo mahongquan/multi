@@ -9,6 +9,6 @@
     ["transform-assets-import-to-string", {
         "baseDir": "./",
         "baseUri": ""
-    }]
+    }],
   ]
 }
