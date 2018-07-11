@@ -1,5 +1,7 @@
 import {myglobal,contacts,host} from './constants';
 import Client from "./Client";
+import DlgTest from './DlgTest';
+
 var $=require("jquery");
 var _ = require('underscore');
 var moment = require('moment');
@@ -131,12 +133,15 @@ class ContactEdit2New{
     this.index=options.index;
     this.props=options;
     this.model=this.parent.todos[this.index];
-    this.open2(this.index);
+    // this.open2(this.index);
     this.show();
+  }
+  test_save=()=>{
+    let v=new DlgTest();
   }
   show=()=>{
         $("body").append(this.template(this.model));              //to dom
-        $("#button_save").click(this.login);  //bind
+        $("#bt_save").click(this.test_save);  //bind
         var options={};
         $('#modal1_cantactEdit').on('hidden.bs.modal', function (e) {
             $('#modal1_cantactEdit').remove();

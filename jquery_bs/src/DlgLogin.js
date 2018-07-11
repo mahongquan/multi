@@ -1,4 +1,6 @@
 import {myglobal,contacts,host} from './constants';
+import Client from "./Client";
+
 var _ = require('underscore');
 var $=require("jquery");
 const template_str=`
@@ -74,26 +76,12 @@ export default class UserView{
         });
     }
     login=()=>{
-      //console.log("login");
       var data={
         username:$("#username").val(),
         password:$("#password").val(),
         csrfmiddlewaretoken:myglobal.csrf_token,
       };
-      // var self=this;
-        $.ajax({
-           type: 'POST'
-          , url: host+"/rest/login"
-          , data: data
-          , complete:()=> {
-          }
-          , error:(XMLHttpRequest, textStatus, errorThrown)=> {
-              //console.log(errorThrown);
-          }
-          , success: (data)=>{
-              //console.log("ajax done");
-              //console.log(data);
-              data=JSON.parse(data);
+      Client.login(data.username,data.password,(data)=>{
               if (data.success) {
                   myglobal.user=data.data.name;
                   // myglobal.csrf_token=getCookie('csrftoken'); //Ext.util.Cookies.get("csrftoken");
@@ -101,16 +89,8 @@ export default class UserView{
                   $('#modal1').modal('hide');
                   this.parent.load_data();
               }
-          }
-      });
+      })
     }
-    // button_save_click=()=>{
-    //     console.log("save");
-    //     console.log($("#username").val())
-    //     console.log($("#password").val())
-
-    //     $('#modal1').modal('hide');
-    // }
     show=()=>{
         $("body").append(this.template(this.model));              //to dom
         $("#button_save").click(this.login);  //bind
