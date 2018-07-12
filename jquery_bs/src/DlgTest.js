@@ -1,6 +1,4 @@
 import {myglobal,contacts,host} from './constants';
-import Client from "./Client";
-
 var _ = require('underscore');
 var $=require("jquery");
 const template_str=`
@@ -49,7 +47,6 @@ const template_str=`
 </div>`;
 export default class UserView{
     constructor(options){
-      this.parent=options.parent;
       this.model={
             username: 'mahongquan',
             password: '333333',
@@ -59,29 +56,27 @@ export default class UserView{
         // this.get_csrf();
       this.show();
     }
-    // get_csrf= function() {
-    //     $.ajax({
-    //       context: this,
-    //       url: host + '/rest/login_index',
-    //       cache: false,
-    //       processData: false,
-    //       contentType: false,
-    //       error: function(XMLHttpRequest, textStatus, errorThrown) {
-    //         console.log(errorThrown);
-    //       },
-    //       success: function(data) {
-    //         myglobal.csrf_token = data.csrf_token;
-    //         this.show();
-    //       },
-    //     });
-    // }
     login=()=>{
+      //console.log("login");
       var data={
         username:$("#username").val(),
         password:$("#password").val(),
         csrfmiddlewaretoken:myglobal.csrf_token,
       };
-      Client.login(data.username,data.password,(data)=>{
+      // var self=this;
+        $.ajax({
+           type: 'POST'
+          , url: host+"/rest/login"
+          , data: data
+          , complete:()=> {
+          }
+          , error:(XMLHttpRequest, textStatus, errorThrown)=> {
+              //console.log(errorThrown);
+          }
+          , success: (data)=>{
+              //console.log("ajax done");
+              //console.log(data);
+              data=JSON.parse(data);
               if (data.success) {
                   myglobal.user=data.data.name;
                   // myglobal.csrf_token=getCookie('csrftoken'); //Ext.util.Cookies.get("csrftoken");
@@ -89,15 +84,24 @@ export default class UserView{
                   $('#modal1').modal('hide');
                   this.parent.load_data();
               }
-      })
+          }
+      });
     }
+    // button_save_click=()=>{
+    //     console.log("save");
+    //     console.log($("#username").val())
+    //     console.log($("#password").val())
+
+    //     $('#modal1').modal('hide');
+    // }
     show=()=>{
         $("body").append(this.template(this.model));              //to dom
         $("#button_save").click(this.login);  //bind
-        var options={};
+        
         $('#modal1').on('hidden.bs.modal', function (e) {
             $('#modal1').remove();
         })
+        var options={};
         $('#modal1').modal(options)
     }
 }
