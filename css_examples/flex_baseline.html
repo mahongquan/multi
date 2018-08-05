@@ -1,0 +1,106 @@
+<!DOCTYPE  html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<style>
+ul {
+    display:flex;
+    padding: 0;
+    margin:0 0 0 0;
+    flex-direction:row;
+    flex-wrap:wrap;
+    background-color: #777;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-content:flex-start;
+    height:300px;
+    width:400px;
+    overflow:auto;
+}
+li {
+    background-color: #8cacea;
+    margin: 8px;
+    width:100px;
+    height:50px;
+    overflow:hidden;
+}
+li:first-child
+{ 
+    line-height:1em;
+    font-size:3em;
+    height:100px;
+}
+li:last-child
+{ 
+    line-height:1em;
+    font-size:2em;
+    height:80px;
+}
+#root{
+}
+</style>
+<script src="./jquery-3.1.0.js"></script>
+<script>
+  $(document).ready(function(){
+    console.log("ready");
+    // function start_click(){
+    //   console.log("start");
+    //   $("ul").css("align-items",$("#align_items").val());  
+    //   $("ul").css("justify-content",$("#justify_content").val());  
+    // }
+    //var button_start = document.getElementById("start");
+    //button_start.addEventListener("click", start_click);
+    // $("#stop").click(stop_click);
+    $("#align_items").change(function(){
+        console.log($("#align_items").val());
+        $("ul").css("align-items",$("#align_items").val());
+    });
+    $("#justify_content").change(function(){
+        console.log($("#justify_content").val());
+        $("ul").css("justify-content",$("#justify_content").val());
+    });
+     $("#align_content").change(function(){
+        console.log($("#align_content").val());
+        $("ul").css("align-content",$("#align_content").val());
+    });
+  });
+</script>
+</head>
+<body>
+     <label>align-items:</label><select id="align_items" value="flex-start">
+          <option value="flex-start">flex-start</option>
+          <option value="flex-end">flex-end</option>
+          <option value="baseline">baseline</option>
+          <option value="center">center</option>
+          <option value="baseline">baseline</option>
+          <option value="stretch">stretch</option>
+    </select>
+    <label>justify-contents:</label>
+    <select id="justify_content" value="flex-start">
+          <option value="flex-start">flex-start</option>
+          <option value="flex-end">flex-end</option>
+          <option value="center">center</option>
+          <option value="space-between">space-between</option>
+          <option value="space-around">space-around</option>
+    </select>
+    <div>
+    <label>align-content:</label>
+    <select id="align_content" value="flex-start">
+          <option value="flex-start">flex-start</option>
+          <option value="flex-end">flex-end</option>
+          <option value="center">center</option>
+          <option value="space-between">space-between</option>
+          <option value="space-around">space-around</option>
+          <option value="stretch">stretch</option>
+    </select>
+    </div>
+<div id="root">
+<ul>
+    <li>i'm first child</li>
+     <li>i'm list 2</li>
+    <li>i'm list 3</li>
+    <li>i'm list 19</li>
+    <li>i'm list 20</li>
+    <li>i'm last child</li>
+</ul></div>
+</body></html>

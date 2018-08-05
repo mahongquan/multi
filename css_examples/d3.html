@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Konva Rect Demo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #F0FFF0;
+        }
+    </style>
+  <script src="./d3.v4.js"></script>
+  <script src="./jquery-3.1.0.js"></script>
+<script>
+  $(document).ready(function(){
+    function bodystyle(){
+      console.log(d3.select("body"));
+      d3.select("body").transition().style("background-color", "blue");
+    };
+    d3.selectAll("p").style("color", function() {
+        return "hsl(" + Math.random() * 360 + ",100%,50%)";
+    });
+    d3.select("body").selectAll("p").data([4, 8, 15, 16, 23, 42]).enter().append("p").text(
+        function(d) { 
+            return "I’m number " + d + "!"; 
+        }
+    );
+    $("#button1").click(bodystyle);
+  });
+  </script>
+</head>
+<body>
+   <button id="button1">hi</button>
+   <p>a</p>
+  <p>b</p>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>CSS - position example</title>
+<meta content="width=600" name="viewport"/>
+<link href="./css/style.css" rel="stylesheet"/>
+<link href="./css/code.css" rel="stylesheet"/>
+<!-- <link href="#" rel="stylesheet" type="text/css"/> -->
+<link href="./images/logo.png" rel="icon" type="image/png">
+</head>
+<body class="ltr">
+<div id="logo">
+<a href="./index.html">
+<img src="images/logo.png"/>
+<span>Learn CSS Layout</span>
+</a>
+</div>
+<div id="menu">
+<a class="home-link" href="./index.html">Home</a>
+<a href="toc.html">Table of Contents</a>
+</div>
+
+<div id="container">
+<h1 class="content">position example</h1>
+<p class="content">
+  This position stuff might make a little more sense in a practical example. Below is a realistic page layout.
+</p>
+<style>
+  .container {
+    position: relative;
+  }
+  nav.elem {
+    position: absolute;
+    left: 0px;
+    width: 200px;
+  }
+  section {
+    /* position is static by default */
+    margin-left: 200px;
+  }
+  footer.elem {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 90px;
+    background-color: white;
+    width: 100%;
+    margin: 0;
+    z-index: 1;
+  }
+  body {
+    margin-bottom: 120px;
+  }
+</style>
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.container</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">nav</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">section</span> <span class="p">{</span>
+  <span class="c">/* position is static by default */</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">footer</span> <span class="p">{</span>
+  <span class="nl">position</span><span class="p">:</span> <span class="nb">fixed</span><span class="p">;</span>
+  <span class="nl">bottom</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">70px</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">body</span> <span class="p">{</span>
+  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">120px</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+<div class="container elem">
+<span class="label">&lt;div class="container"&gt;</span>
+<nav class="elem elem-red">
+<span class="label">&lt;nav&gt;</span>
+<ul>
+<li>
+<a href="position-example.html">Home</a>
+</li>
+<li>
+<a href="position-example.html">Taco Menu</a>
+</li>
+<li>
+<a href="position-example.html">Draft List</a>
+</li>
+<li>
+<a href="position-example.html">Hours</a>
+</li>
+<li>
+<a href="position-example.html">Directions</a>
+</li>
+<li>
+<a href="position-example.html">Contact</a>
+</li>
+</ul>
+<span class="endlabel">&lt;/nav&gt;</span>
+</nav>
+<section class="elem elem-green">
+<span class="label">&lt;section&gt;</span>
+<p>
+      The <code>margin-left</code> style for <code>section</code>s makes sure there is room for the <code>nav</code>. Otherwise the absolute and static elements would overlap
+    </p>
+<span class="endlabel">&lt;/section&gt;</span>
+</section>
+<section class="elem elem-green ipsum">
+<span class="label">&lt;section&gt;</span>
+<p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.
+    </p>
+<span class="endlabel">&lt;/section&gt;</span>
+</section>
+<section class="elem elem-green">
+<span class="label">&lt;section&gt;</span>
+<p>
+      Notice what happens when you resize your browser. It works nicely!
+    </p>
+<span class="endlabel">&lt;/section&gt;</span>
+</section>
+<footer class="elem elem-orange">
+<span class="label">&lt;footer&gt;</span>
+<p>
+      If you use a fixed header or footer, make sure there is room for it! I put a <code>margin-bottom</code> on the <code>body</code>.
+    </p>
+<span class="endlabel">&lt;/footer&gt;</span>
+</footer>
+</div>
+<p class="content">
+  This example works because the container is taller than the nav. If it wasn't, the nav would overflow outside of its container. In the coming pages we'll discuss other layout techniques that have different pros and cons.
+</p>
+<div class="nav-wrapper">
+<a class="nav prev" href="position.html">Previous</a>
+<a class="nav next" href="float.html">Next</a>
+</div>
+<footer>
+          8 / 19
+        </footer>
+</div>
+<div id="share">
+<li>
+<a class="twitter-share-button" data-url="http://learnlayout.com/" href="#">Tweet</a>
+
+</li>
+<li>
+
+</li>
+<li>
+<div class="g-plusone" data-size="medium"></div>
+
+</li>
+<li id="license">
+<a href="#" rel="license"><img alt="Creative Commons License" src="#" style="border-width:0"/></a>
+</li>
+</div>
+<div id="advertisements">
+<span>Ads by <a href="#">Bocoup</a></span>
+<div>
+<!--/* Revive Adserver Javascript Tag v3.0.5 */-->
+<script type="text/javascript"></script><noscript><a href="#" target="_blank"><img alt="" border="0" src="#"/></a></noscript>
+</div>
+</div>
+</body>
+</html>

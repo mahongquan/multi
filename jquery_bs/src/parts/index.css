@@ -1,0 +1,49 @@
+body{
+  margin:5px 5px 5px 5px;
+}
+a{
+  color:blue;
+  :link {
+      color: #d64078;
+      text-decoration: none;
+  }
+
+  :visited {
+      color: #d64078;
+  }
+
+  :hover {
+    text-decoration: underline;
+  }
+
+  :active {
+    background-color: black;
+    color: white;
+  }
+}
+
+td{ 
+  padding: 3px 3px 3px 3px; 
+}
+#page{ 
+  padding: 5px 5px 5px 5px;
+}
+.contact_delete{
+  margin:1px 20px 1px 1px;
+}
+.contact_zxd{
+  margin:1px 20px 1px 1px;
+}
+.contact_zs{
+  margin:1px 20px 1px 1px;
+}
+.margin_left{
+  margin:1px 1px 1px 20px;
+}
+
+thead tr{ 
+  font-weight:bold;
+}
+.table_input{
+  background-color:green;
+}

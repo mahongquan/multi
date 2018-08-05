@@ -1,6 +1,5 @@
 var _ = require('underscore');
-console.log(_);
-
+// console.log(_);
 export class Component{
     constructor(){
     	this.state={};
