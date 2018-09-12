@@ -11,9 +11,12 @@ class A4Lian extends Component {
       return `<div style="position:relative;width:210mm;height:148mm;left:0px;top:0px;
       ">
       <div style="padding:100px 100px 0px 100px;">
-      <div style="margin-left:100px;font-size:20px">
+      <p style="text-align:center;font-size:20px">
               <font face="SimHei">北京科技大学预收款凭条&emsp;&emsp;&emsp;No&emsp;${start}</font>
-      </div>
+      </p>
+      <p style="text-align:center;font-size:15px">
+         (不作报销凭证)
+      </p>
       <div style="height:1em"></div>
       <p>
           <span>今收到</span>

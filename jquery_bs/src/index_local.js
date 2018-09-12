@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from './react-me';
+import ReactDOM from './react-dom-me';
 var electron=require('electron');
 const fs= require('fs');
 const path=require('path');
@@ -32,10 +32,9 @@ let module_name;
 let where=getWhere();
 let App;
 // module_name="./AppRoutes";  
-module_name="./editor";
-// if (module_name==="./editor"){
-//     link("./","paper.css");
-// }
+module_name="./A4Lian";
+link("./","paper.css");
 App=require(module_name).default;
-ReactDOM.render(<App />, document.getElementById('root'));
+let app=new App();
+ReactDOM.render(app, document.getElementById('root'));
 
