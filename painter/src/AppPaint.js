@@ -3,6 +3,18 @@ import { ResizableBox } from 'react-resizable';
 import Triangle from './Triangle';
 import Canvas from './Canvas';
 import { AutoSizer, } from 'react-virtualized';
+var mouseFrom = {},
+  mouseTo = {},
+  drawType = null,
+  canvasObjectIndex = 0,
+  textbox = null;
+var drawWidth = 3; //笔触宽度
+var color = 'green'; //画笔颜色
+var drawingObject = null; //当前绘制对象
+var moveCount = 1; //绘制移动计数器
+var doDrawing = false; // 绘制状态
+let canvas;
+///////////////////////////
 const SIDEBAR_WIDTH = 235;
 const header_h="80px";
 const footer_h="40px";
@@ -129,23 +141,76 @@ class QueryContainer extends Component {
     width:500,
     height:500,
   }
+  componentDidMount() {
+    // this.bind_events();
+    // this.bind_select();
+    window.addEventListener('resize',this.resize);
+    canvas = new fabric.Canvas('c', {
+        backgroundColor: 'rgb(100,100,200)',
+        width: this.refs.canvas.clientWidth,
+        height: this.refs.canvas.clientHeight,
+        isDrawingMode: true,
+        skipTargetFind: false,
+        selectable: false,
+        selection: false,
+      });
+
+      window.canvas = canvas;
+      window.zoom = window.zoom ? window.zoom : 1;
+
+      canvas.freeDrawingBrush.color = color; //设置自由绘颜色
+      canvas.freeDrawingBrush.width = drawWidth;
+  }
+  componentWillUnmount() {       
+    window.removeEventListener('resize',this.resize);
+  }
+  resize=(w,h)=>{
+    console.log(w);
+    console.log(h);
+    // if(canvas) delete canvas;
+    this.setState({height:h,width:w},()=>{
+
+      canvas = new fabric.Canvas('c', {
+        backgroundColor: 'rgb(100,100,200)',
+        width: this.refs.canvas.clientWidth,
+        height: this.refs.canvas.clientHeight,
+        isDrawingMode: true,
+        skipTargetFind: false,
+        selectable: false,
+        selection: false,
+      });
+
+      window.canvas = canvas;
+      window.zoom = window.zoom ? window.zoom : 1;
+
+      canvas.freeDrawingBrush.color = color; //设置自由绘颜色
+      canvas.freeDrawingBrush.width = drawWidth;
+    });
+  }
   render() {
     var width=this.state.width;
     var height=this.state.height
+    console.log(this.state);
     return (
     <div style={STYLES.content}>
             <ResizableBox 
               className="react-resizable react-resizable-two-resize"
               onResizeStop={
                 (event, { size }) =>{
-                  this.setState({height:size.height,width:size.width});
+                  // this.setState({height:size.height,width:size.width});
+                  this.resize(size.width,size.height);
                 } 
               }
+
               width={width}
               height={height}
               minConstraints={[10, 10]}
-              maxConstraints={[2000, 2000]}>
-              <Canvas  width={500} height={500}/>
+              maxConstraints={[6000, 6000]}>
+              <canvas id="c"
+                style={{border:"solid green 2px"}}
+                ref="canvas"
+                width={width}
+                height={height} />
             </ResizableBox>
 
     </div>);
@@ -159,6 +224,7 @@ class QueryBrowserContainer extends Component {
   state={
     sideBarWidth:SIDEBAR_WIDTH,
     sidebarCollapsed:false,
+    width:100,
   }
   constructor(props, context) {
     super(props, context);
@@ -166,6 +232,10 @@ class QueryBrowserContainer extends Component {
   componentDidMount() {
     window.addEventListener("click",this.windowclick);
   }
+  // resize=()=>{
+  //   this.setState({width:window.innerWidth-10-this.state.sideBarWidth})
+  // }
+  
   windowclick=(e)=>{
     console.log(e.target);
   }

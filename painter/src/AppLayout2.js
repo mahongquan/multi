@@ -165,7 +165,7 @@ nothing;
               height={200}
               minConstraints={[10, 10]}
               maxConstraints={[2000, 2000]}>
-              <LongSpan />
+              < />
          </ResizableBox>
          <LongSpan />
     </div>);
@@ -208,7 +208,6 @@ class QueryBrowserContainer extends Component {
               height={NaN}
               minConstraints={[50, 0]}
               maxConstraints={[window.innerWidth-10-18, 10000]}>
-              <LongSide style={{minHeight:`calc(100vh - ${header_h} - ${footer_h})`}}/>
             </ResizableBox>
           </div>
           <QueryContainer width={window.innerWidth-10-this.state.sideBarWidth} />

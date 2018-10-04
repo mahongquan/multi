@@ -184,7 +184,7 @@ class QueryBrowserContainer extends Component {
               height={NaN}
               minConstraints={[50, 0]}
               maxConstraints={[window.innerWidth-10-18, 10000]}>
-              <LongSide />
+              <Canvas />
             </ResizableBox>
           </div>
           <QueryContainer width={window.innerWidth-10-this.state.sideBarWidth} />
