@@ -8,7 +8,11 @@ const BrowserWindow = electron.BrowserWindow
 
 const {Menu, MenuItem, dialog, ipcMain }=electron;
 
-
+ipcMain.on('getpath', (event, arg) => {
+  // console.log("getpath")
+  // console.log(__dirname);
+  event.returnValue = __dirname;
+})
 //是否可以安全退出
 
 let safeExit = false;
