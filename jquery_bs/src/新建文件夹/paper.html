@@ -1,0 +1,101 @@
+<html lang="en"><head>
+    <meta charset="utf-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A4二联单</title>
+  <link rel="stylesheet" href="paper.css"></head>
+  <body>
+    <div id="root">
+<div>
+  <div style="display:flex;justify-content:space-between" class="only_screen">
+   <div>
+    <label>起始号码</label><input id="id_start" value="{this.state.start}" onchange="{this.onChange}">
+    <label>页数</label><input id="id_num" value="{this.state.num}" onchange="{this.onChange_num}">
+    <button id="id_print" onclick="{this.onClick}">打印</button>
+   </div>
+   <div>
+    <label>year</label><input id="id_year" value="{this.state.year}" onchange="{this.onChange_year}">
+   </div>
+  </div>
+  <div id="id_a4" class="A4"><div key="{i}" class="sheet">
+            <div style="position:relative;width:210mm;height:148mm;left:0px;top:0px">
+      <p style="margin-top:140px;margin-left:100px;font-size:20px">
+              <font face="SimHei">北京科技大学预收款凭条&emsp;&emsp;&emsp;No&emsp;00180009</font>
+      </p>
+      <div style="height:1em"></div>
+      <p>
+          <span>今收到</span>
+         <input type="text" class="line_input" style="width:130mm">
+      </p>
+      <p>
+          <span>交&emsp;来</span>
+          <input type="text" class="line_input" style="width:130mm">
+      </p>
+      <p>
+          <span>人民币（大写）</span>
+          <input type="text" class="line_input" style="width:54mm">
+          <span>￥</span>
+          <input type="text" class="line_input" style="width:52mm">
+      </p>
+      <div style="height:2em"></div>
+      <p>
+          <span>收款单位</span>
+          <span style="margin:0 0 0 38mm">收款人</span>
+      </p>
+      <p>
+          <span>(公章)</span>
+          <input type="text" class="line_input">
+          <span>(签章)</span>
+          <input type="text" class="line_input">
+          <span>&emsp;&emsp;&emsp;年&emsp;月&emsp;日</span>
+       </p>
+       <div style="padding:3px 3px 3px 3px;
+               writing-mode:tb-rl;
+               position:absolute;
+               width:1em;
+               top:50mm;left:190mm">
+       第一联　存根联
+       </div>
+    </div>
+            <div style="position:relative;width:210mm;height:148mm;left:0px;top:0px">
+      <p style="margin-top:140px;margin-left:100px;font-size:20px">
+              <font face="SimHei">北京科技大学预收款凭条&emsp;&emsp;&emsp;No&emsp;00180009</font>
+      </p>
+      <div style="height:1em"></div>
+      <p>
+          <span>今收到</span>
+         <input type="text" class="line_input" style="width:130mm">
+      </p>
+      <p>
+          <span>交&emsp;来</span>
+          <input type="text" class="line_input" style="width:130mm">
+      </p>
+      <p>
+          <span>人民币（大写）</span>
+          <input type="text" class="line_input" style="width:54mm">
+          <span>￥</span>
+          <input type="text" class="line_input" style="width:52mm">
+      </p>
+      <div style="height:2em"></div>
+      <p>
+          <span>收款单位</span>
+          <span style="margin:0 0 0 38mm">收款人</span>
+      </p>
+      <p>
+          <span>(公章)</span>
+          <input type="text" class="line_input">
+          <span>(签章)</span>
+          <input type="text" class="line_input">
+          <span>&emsp;&emsp;&emsp;年&emsp;月&emsp;日</span>
+       </p>
+       <div style="padding:3px 3px 3px 3px;
+               writing-mode:tb-rl;
+               position:absolute;
+               width:1em;
+               top:50mm;left:190mm">
+       第二联　交款方收执
+       </div>
+    </div>
+        </div></div>
+</div></div>
+ 
+</body></html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Konva Rect Demo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #F0FFF0;
+        }
+    </style>
+  <script src="konva-1.6.0/konva.js"></script>
+  <script>
+    function addRect(){
+      var rect = new Konva.Rect({
+        x: 50,
+        y: 50,
+        width: 100,
+        height: 50,
+        fill: 'green',
+        stroke: 'black',
+        strokeWidth: 4,
+        draggable:true,
+      });
+
+      // add the shape to the layer
+      layer.add(rect);
+      var path = new Konva.Path({
+        x: 240,
+        y: 40,
+        data: 'M12.582,9.551C3.251,16.237,0.921,29.021,7.08,38.564l-2.36,1.689l4.893,2.262l4.893,2.262l-0.568-5.36l-0.567-5.359l-2.365,1.694c-4.657-7.375-2.83-17.185,4.352-22.33c7.451-5.338,17.817-3.625,23.156,3.824c5.337,7.449,3.625,17.813-3.821,23.152l2.857,3.988c9.617-6.893,11.827-20.277,4.935-29.896C35.591,4.87,22.204,2.658,12.582,9.551z',
+        fill: 'green',
+        scale: 2,
+        draggable:true,
+      });
+      layer.add(path);
+      var text = new Konva.Text({
+        x: 10,
+        y: 15,
+        text: 'Simple Text',
+        fontSize: 30,
+        fontFamily: 'Calibri',
+        fill: 'green',
+        draggable:true,
+      });
+      layer.add(text);
+      // var arc = new Konva.Arc({
+      //   x: 10,
+      //   y: 15,
+      //   innerRadius: 40,
+      //   outerRadius: 80,
+      //   fill: 'red',
+      //   stroke: 'black',
+      //   strokeWidth: 5,
+      //   angle: 60,
+      //   rotation: -120
+      // });
+      // layer.add(arc);
+      var triangle = new Konva.Shape({
+        sceneFunc: function ( ctx ) {
+          // 自定义绘图路径
+          ctx.moveTo( window.innerWidth / 2, window.innerHeight / 4 );
+          ctx.lineTo( window.innerWidth / 2 - window.innerHeight / ( 2 * 1.732 ), window.innerHeight * 3 / 4 );
+          ctx.lineTo( window.innerWidth / 2 + window.innerHeight / ( 2 * 1.732 ), window.innerHeight * 3 / 4 );
+          ctx.closePath();
+          // Konva.js 的独有方法
+          ctx.fillStrokeShape( this );
+         },
+         x:0,y:0,
+         fill: 'pink',
+         stroke: 'red',
+         draggable:true,
+      });
+      layer.add(triangle);
+      layer.draw();
+      // var velocity = 50;
+
+      // var anim = new Konva.Animation(function(frame) {
+      //   var dist = velocity * (frame.timeDiff / 1000);
+      //   path.move(dist, 0);
+      // }, layer);
+
+      // anim.start();
+      // var tween = new Konva.Tween({
+      //   node: path,
+      //   rotationDeg: 360,
+      //   duration: 1,
+      //   easing: Konva.Easings.EaseInOut
+      // });
+
+      // // play tween
+      // tween.play();
+
+    }
+    function addCircle(){
+      var circle = new Konva.Circle({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        radius: 70,
+        fill: 'red',
+        stroke: 'black',
+        strokeWidth: 4,
+        draggable:true,
+      });
+      // add the shape to the layer
+      layer.add(circle);
+      layer.draw();
+
+    }
+  </script>
+</head>
+<body>
+  <div><button onclick="addRect()">add rect</button><button onclick="addCircle()">add circle</button></div>
+  <div id="container"></div>
+  <script>
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+
+    var stage = new Konva.Stage({
+      container: 'container',
+      width: width,
+      height: height
+    });
+    var layer = new Konva.Layer();
+    // add the layer to the stage
+    stage.add(layer);
+  </script> 
+</body>
+</html>

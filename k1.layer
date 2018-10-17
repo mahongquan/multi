@@ -1,0 +1,1 @@
+[{"className":"Circle","attrs":{"x":484,"y":342.5,"radius":70,"fill":"#789","stroke":"black","strokeWidth":4,"draggable":true}},{"className":"Ring","attrs":{"x":0,"y":0,"draggable":true,"innerRadius":40,"outerRadius":80,"width":160,"height":160,"fill":"#765","stroke":"black","strokeWidth":5}}]

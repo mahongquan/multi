@@ -1,0 +1,127 @@
+<!DOCTYPE  html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>CSS - float layout example</title>
+<meta content="width=600" name="viewport"/>
+<link href="./css/style.css" rel="stylesheet"/>
+<link href="./css/code.css" rel="stylesheet"/>
+<!-- <link href="#" rel="stylesheet" type="text/css"/> -->
+<link href="./images/logo.png" rel="icon" type="image/png">
+<script type="text/javascript"></script>
+</head>
+<body class="ltr">
+<div id="logo">
+<a href="./index.html">
+<img src="images/logo.png"/>
+<span>Learn CSS Layout</span>
+</a>
+</div>
+<div id="menu">
+<a class="home-link" href="./index.html">Home</a>
+<a href="toc.html">Table of Contents</a>
+</div>
+
+<div id="container">
+<h1 class="content">float layout example</h1>
+<p class="content">
+  It's very common to do entire layouts using <code>float</code>. Here is the same layout we did with <code>position</code> earlier, but using <code>float</code> instead.
+</p>
+<style>
+  .clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  nav {
+    float: left;
+    width: 200px;
+  }
+  section {
+    margin-left: 200px;
+  }
+</style>
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">nav</span> <span class="p">{</span>
+  <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">section</span> <span class="p">{</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+<div class="clearfix elem">
+<span class="label">&lt;div class="clearfix"&gt;</span>
+<nav class="elem elem-red">
+<span class="label">&lt;nav&gt;</span>
+<ul>
+<li>
+<a href="float-layout.html">Home</a>
+</li>
+<li>
+<a href="float-layout.html">Taco Menu</a>
+</li>
+<li>
+<a href="float-layout.html">Draft List</a>
+</li>
+<li>
+<a href="float-layout.html">Hours</a>
+</li>
+<li>
+<a href="float-layout.html">Directions</a>
+</li>
+<li>
+<a href="float-layout.html">Contact</a>
+</li>
+</ul>
+<span class="endlabel">&lt;/nav&gt;</span>
+</nav>
+<section class="elem elem-green">
+<span class="label">&lt;section&gt;</span>
+<p>
+      This example works just like the last one. Notice we put a <code>clearfix</code> on the container. It's not needed in this example, but it would be if the <code>nav</code> was longer than the non-floated content.
+    </p>
+<span class="endlabel">&lt;/section&gt;</span>
+</section>
+<section class="elem elem-green ipsum">
+<span class="label">&lt;section&gt;</span>
+<p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.
+    </p>
+<span class="endlabel">&lt;/section&gt;</span>
+</section>
+</div>
+<div class="nav-wrapper">
+<a class="nav prev" href="clearfix.html">Previous</a>
+<a class="nav next" href="percent.html">Next</a>
+</div>
+<footer>
+          12 / 19
+        </footer>
+</div>
+<div id="share">
+<li>
+<a class="twitter-share-button" data-url="http://learnlayout.com/" href="#">Tweet</a>
+<script></script>
+</li>
+<li>
+<iframe allowtransparency="true" frameborder="0" scrolling="no" src="#" style="border:none; overflow:hidden; width:110px; height:21px;"></iframe>
+</li>
+<li>
+<div class="g-plusone" data-size="medium"></div>
+<script type="text/javascript"></script>
+</li>
+<li id="license">
+<a href="#" rel="license"><img alt="Creative Commons License" src="#" style="border-width:0"/></a>
+</li>
+</div>
+<div id="advertisements">
+<span>Ads by <a href="#">Bocoup</a></span>
+<div>
+<!--/* Revive Adserver Javascript Tag v3.0.5 */-->
+<script type="text/javascript"></script><noscript><a href="#" target="_blank"><img alt="" border="0" src="#"/></a></noscript>
+</div>
+</div>
+</body>
+</html>

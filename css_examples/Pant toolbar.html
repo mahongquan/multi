@@ -1,0 +1,114 @@
+<html><body><style>@charset "UTF-8";
+.window {
+  border-top: 1px solid #dfdfdf;
+  border-left: 1px solid #dfdfdf;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  position: absolute;
+  background: #c0c0c0;
+  padding: 2px;
+  display: block !important;
+  z-index: 10;
+  cursor: default; }
+  .window > * {
+    margin: 1px; }
+  .window:after {
+    border-top: 1px solid #fff;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #7b7b7b;
+    border-bottom: 1px solid #7b7b7b;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    content: '';
+    pointer-events: none; }
+  .window .window__titlebar {
+    background: linear-gradient(to right, #000080 0%, #1084d0 100%);
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 12px;
+    height: 15px;
+    align-items: center;
+    justify-content: space-between; }
+    .window .window__titlebar .window__titlebar__title {
+      padding: 0;
+      padding-left: 2px;
+      margin: 0;
+      display: inline-block !important; }
+    .window .window__titlebar button.window__titlebar__close {
+      border-top: 1px solid #fff;
+      border-left: 1px solid #fff;
+      border-right: 1px solid #000;
+      border-bottom: 1px solid #000;
+      margin: 2px;
+      width: 13px;
+      height: 11px;
+      display: inline-block !important;
+      float: right;
+      padding: 0;
+      vertical-align: middle;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      background: #c0c0c0;
+      position: relative; }
+      .window .window__titlebar button.window__titlebar__close:before {
+        content: '×';
+        right: 0px;
+        top: -3px;
+        position: relative; }
+      .window .window__titlebar button.window__titlebar__close:after {
+        content: '';
+        pointer-events: none;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        border-top: 1px solid #dfdfdf;
+        border-left: 1px solid #dfdfdf;
+        border-right: 1px solid #808080;
+        border-bottom: 1px solid #808080; }
+      .window .window__titlebar button.window__titlebar__close.window__titlebar__close--pressed {
+        border-top: 1px solid #000;
+        border-left: 1px solid #000;
+        border-right: 1px solid #fff;
+        border-bottom: 1px solid #fff; }
+        .window .window__titlebar button.window__titlebar__close.window__titlebar__close--pressed:after {
+          border-top: 1px solid #808080;
+          border-left: 1px solid #808080;
+          border-right: 1px solid #dfdfdf;
+          border-bottom: 1px solid #dfdfdf; }
+  .window .window__content {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    overflow-wrap: break-word; }
+  .window.window--hidden {
+    display: none !important; }
+  .window .move {
+    z-index: 20;
+    outline: 1px dotted black;
+    pointer-events: none;
+    position: absolute;
+    top: 0px;
+    left: 0px; }
+</style><div class="window">
+    <div class="window__titlebar">
+        title is here<button class="window__titlebar__close"> </button>
+    </div>
+    <div class="window__content">
+        <div class="tool">btn</div>
+        <div class="tool">btn</div>
+        <div class="tool">btn</div>
+        <div class="tool">btn</div>
+        <div class="tool">btn</div>
+        <div class="tool">btn</div>
+        <div class="tool">btn</div>
+        <div class="tool">btn</div>
+    </div>
+</div>
+
+
+
+</body></html>

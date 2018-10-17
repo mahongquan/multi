@@ -1,0 +1,150 @@
+<!DOCTYPE  html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>CSS - percent width</title>
+<meta content="width=600" name="viewport"/>
+<link href="./css/style.css" rel="stylesheet"/>
+<link href="./css/code.css" rel="stylesheet"/>
+<!-- <link href="#" rel="stylesheet" type="text/css"/> -->
+<link href="./images/logo.png" rel="icon" type="image/png">
+<script type="text/javascript"></script>
+</head>
+<body class="ltr">
+<div id="logo">
+<a href="./index.html">
+<img src="images/logo.png"/>
+<span>Learn CSS Layout</span>
+</a>
+</div>
+<div id="menu">
+<a class="home-link" href="./index.html">Home</a>
+<a href="toc.html">Table of Contents</a>
+</div>
+
+<div id="container">
+<h1 class="content">percent width</h1>
+<p class="content">
+  Percent is a measurement unit relative to the containing block. It's great for images: here we make an image that is always 50% the width of its container. Try shrinking down the page to see what happens!
+</p>
+<style>
+  .clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  article img {
+    float: right;
+    width: 50%;
+  }
+</style>
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">article</span> <span class="nt">img</span> <span class="p">{</span>
+  <span class="nl">float</span><span class="p">:</span> <span class="nb">right</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+<article class="elem elem-green content clearfix">
+<span class="label">&lt;article class="clearfix"&gt;</span>
+<img alt="an image" src="images/ilta.png"/>
+<p>
+    You could even use <code>min-width</code> and <code>max-width</code> to limit how big or small the image can get!
+  </p>
+<span class="endlabel">&lt;/article&gt;</span>
+</article>
+<div class="content">
+<h2>percent width layout</h2>
+</div>
+<p class="content">
+  You can use percent for layout, but this can require more work. In this example, the <code>nav</code> content starts to wrap in a displeasing way when the window is too narrow. It comes down to what works for your content.
+</p>
+<style>
+  nav.elem {
+    float: left;
+    width: 25%;
+  }
+  section {
+    margin-left: 25%;
+  }
+</style>
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">nav</span> <span class="p">{</span>
+  <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">25%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">section</span> <span class="p">{</span>
+  <span class="nl">margin-left</span><span class="p">:</span> <span class="m">25%</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+<div class="container elem">
+<span class="label">&lt;div class="container"&gt;</span>
+<nav class="elem elem-red">
+<span class="label">&lt;nav&gt;</span>
+<ul>
+<li>
+<a href="percent.html">Home</a>
+</li>
+<li>
+<a href="percent.html">Taco Menu</a>
+</li>
+<li>
+<a href="percent.html">Draft List</a>
+</li>
+<li>
+<a href="percent.html">Hours</a>
+</li>
+<li>
+<a href="percent.html">Directions</a>
+</li>
+<li>
+<a href="percent.html">Contact</a>
+</li>
+</ul>
+<span class="endlabel">&lt;/nav&gt;</span>
+</nav>
+<section class="elem elem-green">
+<span class="label">&lt;section&gt;</span>
+<p>
+      When this layout is too narrow, the <code>nav</code> gets squished. Worse, you can't use <code>min-width</code> on the nav to fix it, because the right column wouldn't respect it.
+    </p>
+<span class="endlabel">&lt;/section&gt;</span>
+</section>
+<section class="elem elem-green ipsum">
+<span class="label">&lt;section&gt;</span>
+<p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.
+    </p>
+<span class="endlabel">&lt;/section&gt;</span>
+</section>
+</div>
+<div class="nav-wrapper">
+<a class="nav prev" href="float-layout.html">Previous</a>
+<a class="nav next" href="media-queries.html">Next</a>
+</div>
+<footer>
+          13 / 19
+        </footer>
+</div>
+<div id="share">
+<li>
+<a class="twitter-share-button" data-url="http://learnlayout.com/" href="#">Tweet</a>
+<script></script>
+</li>
+<li>
+<iframe allowtransparency="true" frameborder="0" scrolling="no" src="#" style="border:none; overflow:hidden; width:110px; height:21px;"></iframe>
+</li>
+<li>
+<div class="g-plusone" data-size="medium"></div>
+<script type="text/javascript"></script>
+</li>
+<li id="license">
+<a href="#" rel="license"><img alt="Creative Commons License" src="#" style="border-width:0"/></a>
+</li>
+</div>
+<div id="advertisements">
+<span>Ads by <a href="#">Bocoup</a></span>
+<div>
+<!--/* Revive Adserver Javascript Tag v3.0.5 */-->
+<script type="text/javascript"></script><noscript><a href="#" target="_blank"><img alt="" border="0" src="#"/></a></noscript>
+</div>
+</div>
+</body>
+</html>

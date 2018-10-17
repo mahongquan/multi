@@ -37,6 +37,9 @@ let entryBasePath;
     }
   }
 
+ipcMain.on('getpath', (event, arg) => {
+  event.returnValue = process.argv[1];
+})
 const createWindow = () => {
   console.log("createWindow");
 
@@ -62,7 +65,7 @@ const createWindow = () => {
         {
           label: 'HOME',
           accelerator: 'Ctrl+H',
-          click: (item, win) =>{win.loadURL(entryBasePath);},
+          click: (item, win) =>{win.loadURL(`file://${__dirname}/src/index.html`);},
         },
         {
           label: 'BACK',
@@ -85,12 +88,13 @@ const createWindow = () => {
   const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
   //
-  if (devMode || localMode) {
+  const devMode = (process.argv || []).indexOf('--local') !== -1;
+  if (devMode) {
       mainWindow.openDevTools();
   }
   // and load the index.html of the app.
 
-  mainWindow.loadURL(entryBasePath);
+  mainWindow.loadURL(`file://${__dirname}/src/index.html`);
 
 
 

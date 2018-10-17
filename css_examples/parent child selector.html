@@ -1,0 +1,46 @@
+<html><body><style>
+#div1 #div2{
+  background-color:#0f0
+}
+#div3,#div4{
+  background-color:#0f0
+}
+#div5 #div6{
+  background-color:#0f0
+}
+.elem{
+    border:solid #090 3px;
+    position:relative;
+    padding:20px 0px 20px 0px;
+}
+.elem :first-child:before{
+    content:"div";
+    position:absolute;
+    left:0;
+    top:0;
+    border:solid #090 3px;
+}
+.elem :last-child:after{
+    content:"/div";
+    border:solid #090 3px;
+    position:absolute;
+    right:0;
+    bottom:0;
+}
+</style>
+<div id="div1">hello</div>
+<div id="div2">world</div><br/>
+
+<div id="div3">hello</div>
+<div id="div4">world</div><br/>
+
+<div id="div5">hello<div id="div6">world</div>
+</div>
+<br />
+<div class='elem'><p>hello here</p></div>
+<div class='elem'>
+    <span>hhhhh</span>
+    <div class='elem'><p>hello here</p></div>
+    <p>hhhhhhhhhh</p>
+</div>
+</body></html>

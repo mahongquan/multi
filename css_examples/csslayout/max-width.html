@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>CSS - max-width</title>
+<meta content="width=600" name="viewport"/>
+<link href="./css/style.css" rel="stylesheet"/>
+<link href="./css/code.css" rel="stylesheet"/>
+<!-- <link href="#" rel="stylesheet" type="text/css"/> -->
+<link href="./images/logo.png" rel="icon" type="image/png">
+<script type="text/javascript"></script>
+</head>
+<body class="ltr">
+<div id="logo">
+<a href="./index.html">
+<img src="images/logo.png"/>
+<span>Learn CSS Layout</span>
+</a>
+</div>
+<div id="menu">
+<a class="home-link" href="./index.html">Home</a>
+<a href="toc.html">Table of Contents</a>
+</div>
+
+<div id="container">
+<h1 class="content">max-width</h1>
+<style>
+  #main {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+</style>
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nf">#main</span> <span class="p">{</span>
+  <span class="nl">max-width</span><span class="p">:</span> <span class="m">600px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span> 
+<span class="p">}</span></code></pre></figure>
+<div class="elem" id="main">
+<span class="label">&lt;div id="main"&gt;</span>
+<p>
+    Using <code>max-width</code> instead of <code>width</code> in this situation will improve the browser's handling of small windows. This is important when making a site usable on mobile. Resize this page to check it out!
+  </p>
+<p>
+    By the way, <code>max-width</code> is <a href="#">supported by all major browsers</a> including IE7+ so you shouldn't be afraid of using it.
+  </p>
+<span class="endlabel">&lt;/div&gt;</span>
+</div>
+<div class="nav-wrapper">
+<a class="nav prev" href="margin-auto.html">Previous</a>
+<a class="nav next" href="box-model.html">Next</a>
+</div>
+<footer>
+          4 / 19
+        </footer>
+</div>
+<div id="share">
+<li>
+<a class="twitter-share-button" data-url="http://learnlayout.com/" href="#">Tweet</a>
+<script></script>
+</li>
+<li>
+<iframe allowtransparency="true" frameborder="0" scrolling="no" src="#" style="border:none; overflow:hidden; width:110px; height:21px;"></iframe>
+</li>
+<li>
+<div class="g-plusone" data-size="medium"></div>
+<script type="text/javascript"></script>
+</li>
+<li id="license">
+<a href="#" rel="license"><img alt="Creative Commons License" src="#" style="border-width:0"/></a>
+</li>
+</div>
+<div id="advertisements">
+<span>Ads by <a href="#">Bocoup</a></span>
+<div>
+<!--/* Revive Adserver Javascript Tag v3.0.5 */-->
+<script type="text/javascript"></script><noscript><a href="#" target="_blank"><img alt="" border="0" src="#"/></a></noscript>
+</div>
+</div>
+</body>
+</html>

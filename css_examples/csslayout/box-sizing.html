@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>CSS - box-sizing</title>
+<meta content="width=600" name="viewport"/>
+<link href="./css/style.css" rel="stylesheet"/>
+<link href="./css/code.css" rel="stylesheet"/>
+<!-- <link href="#" rel="stylesheet" type="text/css"/> -->
+<link href="./images/logo.png" rel="icon" type="image/png">
+<script type="text/javascript"></script>
+</head>
+<body class="ltr">
+<div id="logo">
+<a href="./index.html">
+<img src="images/logo.png"/>
+<span>Learn CSS Layout</span>
+</a>
+</div>
+<div id="menu">
+<a class="home-link" href="./index.html">Home</a>
+<a href="toc.html">Table of Contents</a>
+</div>
+
+<div id="container">
+<h1 class="content">box-sizing</h1>
+<style>
+  .simple {
+    width: 500px;
+    margin: 20px auto;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+
+  .fancy {
+    width: 500px;
+    margin: 20px auto;
+    padding: 50px;
+    border: solid #6AC5AC 10px;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+</style>
+<p class="content">
+  The original box model behavior was eventually considered unintuitive, so a new CSS property called <code>box-sizing</code> was created. When you set <code>box-sizing: border-box;</code> on an element, the padding and border of that element no longer increase its width. Here is the same example as the previous page, but with <code>box-sizing: border-box;</code> on both elements:
+</p>
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.simple</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">500px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">20px</span> <span class="nb">auto</span><span class="p">;</span>
+  <span class="nl">-webkit-box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+     <span class="nl">-moz-box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+          <span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.fancy</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">500px</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">20px</span> <span class="nb">auto</span><span class="p">;</span>
+  <span class="nl">padding</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="nb">solid</span> <span class="no">blue</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="nl">-webkit-box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+     <span class="nl">-moz-box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+          <span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+<div class="simple elem">
+<span class="label">&lt;div class="simple"&gt;</span>
+<p>
+    We're the same size now!
+  </p>
+<span class="endlabel">&lt;/div&gt;</span>
+</div>
+<div class="fancy elem">
+<span class="label">&lt;div class="fancy"&gt;</span>
+<p>
+    Hooray!
+  </p>
+<span class="endlabel">&lt;/div&gt;</span>
+</div>
+<p class="content">
+  Since this is so much better, some authors want all elements on all their pages to always work this way. Such authors put the following CSS on their pages:
+</p>
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="o">*</span> <span class="p">{</span>
+  <span class="nl">-webkit-box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+     <span class="nl">-moz-box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+          <span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+<p class="content">
+  This ensures that all elements are always sized in this more intuitive way.
+</p>
+<p class="content">
+  Since <code>box-sizing</code> is pretty new, you should use the <code>-webkit-</code> and <code>-moz-</code> prefixes for now, as I have in these examples. This technique enables experimental features in specific browsers. Also, keep in mind that this one is <a href="#">IE8+</a>.
+</p>
+<div class="nav-wrapper">
+<a class="nav prev" href="box-model.html">Previous</a>
+<a class="nav next" href="position.html">Next</a>
+</div>
+<footer>
+          6 / 19
+        </footer>
+</div>
+<div id="share">
+<li>
+<a class="twitter-share-button" data-url="http://learnlayout.com/" href="#">Tweet</a>
+<script></script>
+</li>
+<li>
+<iframe allowtransparency="true" frameborder="0" scrolling="no" src="#" style="border:none; overflow:hidden; width:110px; height:21px;"></iframe>
+</li>
+<li>
+<div class="g-plusone" data-size="medium"></div>
+<script type="text/javascript"></script>
+</li>
+<li id="license">
+<a href="#" rel="license"><img alt="Creative Commons License" src="#" style="border-width:0"/></a>
+</li>
+</div>
+<div id="advertisements">
+<span>Ads by <a href="#">Bocoup</a></span>
+<div>
+<!--/* Revive Adserver Javascript Tag v3.0.5 */-->
+<script type="text/javascript"></script><noscript><a href="#" target="_blank"><img alt="" border="0" src="#"/></a></noscript>
+</div>
+</div>
+</body>
+</html>

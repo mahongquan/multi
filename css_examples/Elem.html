@@ -1,0 +1,33 @@
+<html><body><style>
+.elem{
+    border:solid #090 3px;
+    position:relative;
+    padding:20px 0px 20px 0px;
+}
+.elem>:first-child:before{
+    content:"<div>";
+    border:solid #090 3px;
+}
+.elem>:last-child:after{
+    content:"</div>";
+    border:solid #090 3px;
+}
+.elem2>:first-child:before{
+    content:"<div>";
+    border:solid #700 3px;
+}
+.elem2>:last-child:after{
+    content:"</div>";
+    border:solid #700 3px;
+}
+
+</style>
+<div class='elem'>
+<div class='elem2' >
+    <p>2</p><p>2</p><p>2</p>
+</div>
+<p>hijiji</p>
+<p>hijiji</p>
+<p>hijiji</p>
+</div>
+</body></html>

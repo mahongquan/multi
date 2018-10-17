@@ -1,0 +1,102 @@
+<!DOCTYPE  html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<link href="./animate.css"  rel="stylesheet"/>
+<style>
+@keyframes bouncing-loader {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0.1;
+    transform: translateY(-0.5rem);
+  }
+}
+#bouncing-loader {
+  display: flex;
+  justify-content: center;
+}
+#bouncing-loader > div {
+  width: 0.5rem;
+  height: 0.5rem;
+  margin: 1.5rem 0.1rem;
+  background: #8385aa;
+  border-radius: 50%;
+  animation: bouncing-loader 0.6s infinite alternate;
+}
+@keyframes newTile {
+  from {
+            transform: scale(0); }
+
+  to {
+            transform: scale(1); } 
+    
+}
+#bouncing-loader > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+#bouncing-loader > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+#div1{
+  position:absolute;
+  background-color:#0f0;
+  top:0px;
+}
+#root{
+    position:relative;
+}
+@keyframes rowMove {
+  from {top: 0px; }
+
+  to {top: 115px; } 
+    
+}
+.row_from_0_to_1 {
+    animation: rowMove 0.6s;
+}
+    
+</style>
+<script src="./jquery-3.1.0.js"></script>
+<script>
+  $(document).ready(function(){
+    console.log("ready");
+    function testAnim(){
+    $('#div1').removeClass().addClass('row_from_0_to_1').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+      $(this).removeClass();
+      console.log($(this));
+    });
+  };
+    function start_click(){
+      console.log("start");
+      //   $("#div1").addClass("row_from_0_to_1");    
+      testAnim();
+    }
+    function stop_click(){
+      console.log("stop");
+      $("#div1").removeClass();
+      console.log($("#div1"));
+    }
+    $("#input1").val("hi==00");
+    $("#input1").css("color","blue");
+    //$("#div1").addClass("animated infinite bounce");
+    var button_start = document.getElementById("start");
+    button_start.addEventListener("click", start_click);
+    $("#stop").click(stop_click);
+  });
+</script>
+</head>
+<body>
+<div id="root">
+<div id="bouncing-loader">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>    
+<button id="start">start</button><button id="stop">stop</button>
+<div id="div1">hello</div>
+<input id="input1" value="hello input" /></div>
+</body>
+</html>
