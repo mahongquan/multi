@@ -20,7 +20,7 @@ import React, { Component } from 'react';
 //       testAnim(anim);
 //     });
 //   });
-export default class Root extends Component<Props> {
+export default class Root extends Component {
 state={selectValue:"bounce"}
 updateValue=(e)=>{
     //console.log(e.target.value);

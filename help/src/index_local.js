@@ -31,8 +31,9 @@ function getWhere(){
 let module_name;
 let where=getWhere();
 let App;
-// module_name="./AppTest";  
-module_name="./AppAnim";  
+module_name="./AppRoutes";  
+// module_name="./AppAnim";  
+// module_name="./AppHelp";  
 if(module_name==="./AppTest")
 {
     link(where,"node_modules/react-tabs/style/react-tabs.css");

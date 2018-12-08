@@ -1,8 +1,15 @@
+  .only_screen{
+    width:100%;
+    position:fixed;
+    top:0px;
+    left:0px;
+    z-index:1;
+    background-color:#aaa;
+  }
 .line_input{
  border:none;
  border-bottom:1px solid #000;
 }
-
 @page { margin: 0 }
 body { margin: 0 }
 .sheet {

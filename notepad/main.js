@@ -15,18 +15,44 @@ let safeExit = false;
 
 //-----------------------------------------------------------------
 
-
+// var config = require('./config');
+// var configData = config.getSync();
+// console.log("config:"+configData);
 
 // Keep a global reference of the window object, if you don't, the window will
-
 // be closed automatically when the JavaScript object is garbage collected.
-
 let mainWindow;
-
-
-
+// ipcMain.on('getconfig', (event, arg) => {
+//   event.returnValue = configData;
+// })
+// ipcMain.on('saveconfig', (event, arg) => {
+//   console.log(arg)
+//   config.save(arg);
+//   mainWindow.webContents.send("config_saved");
+// })
+ipcMain.on('getpath', (event, arg) => {
+  // console.log("getpath")
+  // console.log(__dirname);
+  event.returnValue = __dirname;
+})
+ipcMain.on('print', (event, arg) => {
+  mainWindow.webContents.print();
+})
+ipcMain.on('close', (event, arg) => {
+  // console.log("ipcMain on close");
+  safeExit=true;
+  mainWindow.close();
+})
+const devMode = (process.argv || []).indexOf('--local') !== -1;
+let indexUrl;
+if(devMode){
+   indexUrl=`file://${__dirname}/src/index.html`;
+}
+else{
+   indexUrl=`file://${__dirname}/build/index.html`; 
+}
 const createWindow = () => {
-  console.log("createWindow");
+  // console.log("createWindow");
 
   // Create the browser window.
 
@@ -37,32 +63,106 @@ const createWindow = () => {
     height: 600,
 
   });
-
-
-  const devMode = (process.argv || []).indexOf('--local') !== -1;
+  //menu
+  const template=
+    [{
+      label: '文件',
+      submenu: [
+       {
+          label: '新建',
+          accelerator: 'Ctrl+N',
+          click: (item, win) =>{
+            win.webContents.send("new");
+          },
+       },
+       {
+          label: '打开',
+          accelerator: 'Ctrl+O',
+          click: (item, win) =>{
+            win.webContents.send("open");
+          },
+       },
+       {
+          label: '保存',
+          accelerator: 'Ctrl+S',
+          click: (item, win) =>{
+            win.webContents.send("save");
+          },
+        },
+        {
+          label: '打印',
+          accelerator: 'Ctrl+P',
+          click: (item, win) =>{
+            console.log(win);
+            win.webContents.print();
+            // win.webContents.send("print");
+          },
+        },
+        {
+          label: '新窗口',
+          accelerator: 'Ctrl+N',
+          click: () =>{createWindow()},
+        },
+        {
+          label: '重启',
+          accelerator: 'Ctrl+H',
+          click: (item, win) =>{win.loadURL(indexUrl);},
+        },
+         {
+          label: 'DevTools',
+          accelerator: 'Ctrl+D',
+          click: (item, win) =>{
+            win.openDevTools();
+          },
+        },
+        {
+          label: '退出',
+          accelerator: 'Ctrl+E',
+          click: (item, win) =>{
+             // console.log(win);
+             // console.log(mainWindow);
+             win.close();
+          },
+        }
+        ]
+    },{
+      label: '帮助',
+      submenu: [
+        {
+          label: '关于',
+          accelerator: 'Ctrl+A',
+          click: (item, win) =>{
+            win.webContents.send("about");
+          },
+        }
+        ]
+    }];
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
+  //
   if (devMode) {
       mainWindow.openDevTools();
   }
   // and load the index.html of the app.
 
-  mainWindow.loadURL(`file://${__dirname}/src/index.html`);
-
-
+  mainWindow.loadURL(indexUrl);
 
   // Open the DevTools.
 
   // /mainWindow.webContents.openDevTools();
-  // mainWindow.on('close', (e) => {
+  mainWindow.on('close', (e) => {
+    // console.log("close");
+    // console.log(e);
 
-  //   if(!safeExit){
+    if(!safeExit){
 
-  //     e.preventDefault();
+      e.preventDefault();
 
-  //     mainWindow.webContents.send('action', 'exiting');
+      mainWindow.webContents.send('request_close');
 
-  //   }
+    }
 
-  // });
+  });
 
   //-----------------------------------------------------------------
 

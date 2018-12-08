@@ -15,39 +15,18 @@ let safeExit = false;
 
 //-----------------------------------------------------------------
 
-// var config = require('./config');
-// var configData = config.getSync();
-// console.log("config:"+configData);
+
 
 // Keep a global reference of the window object, if you don't, the window will
+
 // be closed automatically when the JavaScript object is garbage collected.
+
 let mainWindow;
-// ipcMain.on('getconfig', (event, arg) => {
-//   event.returnValue = configData;
-// })
-// ipcMain.on('saveconfig', (event, arg) => {
-//   console.log(arg)
-//   config.save(arg);
-//   mainWindow.webContents.send("config_saved");
-// })
+
 ipcMain.on('getpath', (event, arg) => {
-  event.returnValue = process.argv[1];
+    event.returnValue = __dirname;
 })
-ipcMain.on('print', (event, arg) => {
-  mainWindow.webContents.print();
-})
-ipcMain.on('close', (event, arg) => {
-  safeExit=true;
-  if (mainWindow) mainWindow.close();
-})
-const devMode = (process.argv || []).indexOf('--local') !== -1;
-let indexUrl;
-if(devMode){
-   indexUrl=`file://${__dirname}/src/index.html`;
-}
-else{
-   indexUrl=`file://${__dirname}/build/index.html`; 
-}
+
 const createWindow = () => {
   console.log("createWindow");
 
@@ -66,15 +45,6 @@ const createWindow = () => {
       label: 'File',
       submenu: [
         {
-          label: 'Print',
-          accelerator: 'Ctrl+P',
-          click: (item, win) =>{
-            console.log(win);
-            win.webContents.print();
-            // win.webContents.send("print");
-          },
-        },
-        {
           label: 'New Window',
           accelerator: 'Ctrl+N',
           click: () =>{createWindow()},
@@ -82,7 +52,7 @@ const createWindow = () => {
         {
           label: 'HOME',
           accelerator: 'Ctrl+H',
-          click: (item, win) =>{win.loadURL(indexUrl);},
+          click: (item, win) =>{win.loadURL(`file://${__dirname}/index.html`);},
         },
         {
           label: 'BACK',
@@ -91,7 +61,15 @@ const createWindow = () => {
             win.webContents.send("goback");
           },
         },
-         {
+        {
+          label: 'SAVE',
+          accelerator: 'Ctrl+S',
+          click: (item, win) =>{
+            win.webContents.send("save");
+          },
+        },
+
+        {
           label: 'DevTools',
           accelerator: 'Ctrl+D',
           click: (item, win) =>{
@@ -112,27 +90,30 @@ const createWindow = () => {
   const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
   //
+  const devMode = (process.argv || []).indexOf('--local') !== -1;
   if (devMode) {
       mainWindow.openDevTools();
   }
   // and load the index.html of the app.
 
-  mainWindow.loadURL(indexUrl);
+  mainWindow.loadURL(`file://${__dirname}/index.html`);
+
+
 
   // Open the DevTools.
 
   // /mainWindow.webContents.openDevTools();
-  mainWindow.on('close', (e) => {
+  // mainWindow.on('close', (e) => {
 
-    if(!safeExit){
+  //   if(!safeExit){
 
-      e.preventDefault();
+  //     e.preventDefault();
 
-      mainWindow.webContents.send('request_close');
+  //     mainWindow.webContents.send('action', 'exiting');
 
-    }
+  //   }
 
-  });
+  // });
 
   //-----------------------------------------------------------------
 

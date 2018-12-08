@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AceEditor from 'react-ace';
 import 'brace/mode/css';
 import 'brace/theme/github';
+const d=new Date();
 export default class Root extends Component<Props> {
      constructor(){
       super();
@@ -12,7 +13,6 @@ export default class Root extends Component<Props> {
     }
    
     render=()=>{
-        var d=new Date();
         return(
         <div
             style={{

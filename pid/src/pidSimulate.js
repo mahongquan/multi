@@ -152,7 +152,7 @@ function canvasClick(e) {
     setpointY = e.clientY;
 }
 
-class QueryBrowserContainer extends Component {
+export default class PidSimulate extends Component {
   state={
     kp:kp
     ,ki:ki
@@ -294,7 +294,5 @@ reset_click=()=>{
     );
   }
 }
-
-export default QueryBrowserContainer;
 
 

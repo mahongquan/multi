@@ -32,26 +32,26 @@
     var integralX = 0;
     var integralY = 0;
     var k=0.01;
-    var kp = .3*k;//3.0;
-    var ki = .2*k;//0.0001;
-    var kd = .1*k;//80.0;
+    var kp = 3.0;
+    var ki = 0.0001;
+    var kd = 80.0;
 
     var history = [];
     var historyTick = 0;
 
     function pid() {
         var errorX = setpointX - x;
-
-        prevPrevErrorX=prevErrorX;
+        integralX += errorX;
+        var derivativeX = errorX - prevErrorX;
         prevErrorX = errorX;
 
         var errorY = setpointY - y;
-        prevPrevErrorY=prevErrorY;
+        integralY += errorY;
+        var derivativeY = errorY - prevErrorY;
         prevErrorY = errorY;
 
-        return [0.001 * (kp * errorX - ki * prevErrorX + kd * prevPrevErrorX),
-            0.001 * (kp * errorY -
-             ki * prevErrorY + kd * prevPrevErrorY)];
+        return [0.001 * (kp * errorX + ki * integralX + kd * derivativeX),
+            0.001 * (kp * errorY + ki * integralY + kd * derivativeY)];
     }
 
     function update() {
