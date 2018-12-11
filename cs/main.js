@@ -22,21 +22,6 @@ let safeExit = false;
 // be closed automatically when the JavaScript object is garbage collected.
 
 let mainWindow;
-const devMode = (process.argv || []).indexOf('--dev') !== -1;
-const localMode = (process.argv || []).indexOf('--local') !== -1;
-let entryBasePath;
-  if(localMode){//local mode
-    entryBasePath =  `file://${__dirname}/src/index.html`;  
-  }
-  else{         //devMode  productionMode
-    if(devMode){
-      entryBasePath = 'http://localhost:3000';
-    }
-    else{
-      entryBasePath =  `file://${__dirname}/build/index.html`;     
-    }
-  }
-
 ipcMain.on('getpath', (event, arg) => {
   event.returnValue = process.argv[1];
 })
