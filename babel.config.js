@@ -2,6 +2,7 @@ module.exports = function(api) {
   api.cache(true);
 
   return {
+    highlightCode:false,
     presets: [
       ['@babel/preset-env',{targets: { electron: '3.0' }}],
     ],

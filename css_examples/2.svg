@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="526" height="685" viewBox="0 0 526 685" xml:space="preserve">
+<desc>Created with Fabric.js 2.4.0</desc>
+<defs>
+</defs>
+<rect x="0" y="0" width="100%" height="100%" fill="rgb(100,100,200)"></rect>
+<linearGradient id="SVGID_0" gradientUnits="userSpaceOnUse" x1="-50" y1="-50" x2="50" y2="-50">
+<stop offset="0%" style="stop-color:rgb(255,0,0);stop-opacity: 1"/>
+<stop offset="20%" style="stop-color:rgb(255,165,0);stop-opacity: 1"/>
+<stop offset="40%" style="stop-color:rgb(255,255,0);stop-opacity: 1"/>
+<stop offset="60%" style="stop-color:rgb(0,128,0);stop-opacity: 1"/>
+<stop offset="80%" style="stop-color:rgb(0,0,255);stop-opacity: 1"/>
+<stop offset="100%" style="stop-color:rgb(128,0,128);stop-opacity: 1"/>
+</linearGradient>
+<circle cx="0" cy="0" r="50" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_0); fill-rule: nonzero; opacity: 1;" transform="translate(129.5 116.5) "/>
+<path d="M 375.997 578.997 L 376.003 579.003" style="stroke: rgb(0,128,0); stroke-width: 3; stroke-dasharray: none; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(376 579) translate(-376, -579) " stroke-linecap="round" />
+<path d="M 478.997 248.997 L 479.003 249.003" style="stroke: rgb(0,128,0); stroke-width: 3; stroke-dasharray: none; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(479 249) translate(-479, -249) " stroke-linecap="round" />
+<filter id="SVGID_1" y="-45%" height="190%" x="-22%" width="144%" >
+	<feGaussianBlur in="SourceAlpha" stdDeviation="2.5"></feGaussianBlur>
+	<feOffset dx="3.23" dy="6.29" result="oBlur" ></feOffset>
+	<feFlood flood-color="rgb(0,0,0)" flood-opacity="0.3"/>
+	<feComposite in2="oBlur" operator="in" />
+	<feMerge>
+		<feMergeNode></feMergeNode>
+		<feMergeNode in="SourceGraphic"></feMergeNode>
+	</feMerge>
+</filter>
+	<g transform="translate(409.58 131.35) rotate(342.18) scale(1.27 1.27)" style="filter: url(#SVGID_1);">
+		<text xml:space="preserve" font-family="Times New Roman" font-size="40" font-style="normal" font-weight="normal" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1; white-space: pre;" ><tspan x="-181.35" y="12.57" >I&apos;m a text with shadow</tspan></text>
+	</g>
+	<g transform="translate(292.71 248.12) scale(1.65 1.65)">
+		<text xml:space="preserve" font-family="Times New Roman" font-size="40" font-style="normal" font-weight="normal" style="stroke: rgb(255,19,24); stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1; white-space: pre;" ><tspan x="-143.56" y="12.57" >Text with a stroke</tspan></text>
+	</g>
+	<g transform="translate(223.8 359.1)">
+		<text xml:space="preserve" font-family="Impact" font-size="40" font-style="normal" font-weight="normal" style="stroke: rgb(195,191,191); stroke-width: 3; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1; white-space: pre;" ><tspan x="-152.3" y="12.57" >Lorem ipsum dolor</tspan></text>
+	</g>
+	<g transform="translate(538.3 391.4) scale(0.73 0.73)">
+		<rect fill="#00ff00" x="-108.3" y="-101.25" width="216.6" height="202.5"></rect>
+		<rect fill="#00ff00" x="13.83" y="-101.25" width="94.47" height="45.2"></rect>
+		<rect fill="#00ff00" x="-63.89" y="-48.82" width="172.19" height="45.2"></rect>
+		<rect fill="#00ff00" x="48.32" y="3.62" width="59.98" height="45.2"></rect>
+		<rect fill="#00ff00" x="-108.3" y="56.05" width="216.6" height="45.2"></rect>
+		<text xml:space="preserve" font-family="Times New Roman" font-size="40" font-style="normal" font-weight="normal" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1; white-space: pre;" ><tspan x="13.83" y="-66.08" >this is</tspan><tspan x="-63.89" y="-13.65" >a multiline</tspan><tspan x="48.32" y="38.78" >text</tspan><tspan x="-108.3" y="91.21" >aligned right!</tspan></text>
+	</g>
+<g transform="translate(190.77 484.26) rotate(-10) scale(0.93 1)" style="">
+	<circle cx="0" cy="0" r="100" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,0,0); fill-rule: nonzero; opacity: 1;" transform="translate(0 0) scale(1 0.5) "/>
+		<g transform="translate(0 0)">
+		<text xml:space="preserve" font-family="Times New Roman" font-size="30" font-style="normal" font-weight="normal" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1; white-space: pre;" ><tspan x="-68.74" y="9.42" >hello world</tspan></text>
+	</g>
+</g>
+</svg>

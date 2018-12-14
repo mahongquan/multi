@@ -8,6 +8,7 @@ import AppFlex from './AppFlex';
 import AppAnim from './AppAnim';
 import Home from './Home';
 import Ace from './Ace';
+import Customization from './Customization'
 import {Router,Redirect, BrowserRouter,Route,Switch, Link} from 'react-router-dom'
 var { ipcRenderer } =require("electron");//
 import createHashHistory from "history/createHashHistory";
@@ -26,6 +27,7 @@ export default class Root extends Component<Props> {
     return (
         <Router  history={history}>
             <Switch>
+            <Route path="/context" component={Customization} />
                 <Route path="/ace" component={Ace} />
                 <Route path="/home" component={Home} />
                 <Route path="/app2" component={App2} />

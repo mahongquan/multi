@@ -1,0 +1,13 @@
+{
+  "name": "reactjs-socket-io-chat-app",
+  "version": "0.6.9",
+  "main":"main.js",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.15.3",
+    "socket.io": "^2.0.3"
+  }
+}
