@@ -17,15 +17,7 @@ function link(where,module_name) {
   document.head.appendChild(thelink);
 }
 function getWhere(){
-  let path=window.require('electron').ipcRenderer.sendSync('getpath');
-  let where;
-  if(path==="."){
-     where=".."; 
-  }
-  else{
-    where="../.."
-  }
-  return where;
+  return window.require('electron').ipcRenderer.sendSync('getpath');
 }
 let where=getWhere();
 // module_name="./AppRoutes";  

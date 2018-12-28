@@ -36,7 +36,7 @@ let where = getWhere();
 
 let module_name = './editor';
 link(where, 'node_modules/react-tabs/style/react-tabs.css');
-link(where, 'node_modules/bootstrap/dist/css/bootstrap.min.css');
-link(where, 'node_modules/bootstrap/dist/css/bootstrap-theme.min.css');
+// link(where, 'node_modules/bootstrap/dist/css/bootstrap.min.css');
+// link(where, 'node_modules/bootstrap/dist/css/bootstrap-theme.min.css');
 let App = require(module_name).default;
 ReactDOM.render(<App />, document.getElementById('root'));

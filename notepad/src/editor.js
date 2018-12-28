@@ -11,7 +11,7 @@ const fs=window.require("fs");
 const electron = window.require('electron');
 const { ipcRenderer } =window.require("electron");//
 const fontSize = 16;
-const toolbar_h=70;
+const toolbar_h=80;
 const html = `<!DOCTYPE html>
 <html>
 <head>
