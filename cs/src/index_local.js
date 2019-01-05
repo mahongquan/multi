@@ -17,22 +17,14 @@ function link(where,module_name) {
   document.head.appendChild(thelink);
 }
 function getWhere(){
-  let path=window.require('electron').ipcRenderer.sendSync('getpath');
-  let where;
-  if(path==="."){
-     where=".."; 
-  }
-  else{
-    where="../.."
-  }
-  return where;
+  return window.require('electron').ipcRenderer.sendSync('getpath');
 }
 let module_name;
 let where=getWhere();
 let App;
 // module_name="./AppRoutes";  
 module_name="./cs";
-if (module_name==="./editor"){
+if (module_name==="./cs"){
     link(where,"node_modules/bootstrap/dist/css/bootstrap.min.css");
     link(where,"node_modules/bootstrap/dist/css/bootstrap-theme.min.css");
     link(where,"node_modules/react-datetime/css/react-datetime.css");

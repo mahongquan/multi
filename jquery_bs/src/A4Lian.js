@@ -6,7 +6,7 @@ var $=require("jquery");
 const fs=window.require("fs");
 const path=window.require("path");
 const ipcRenderer = window.require('electron').ipcRenderer; //
-class A4Lian extends Component {
+export default class A4Lian extends Component {
     renderCard=(start,lian)=>{
       return `<div style="position:relative;width:210mm;height:148mm;left:0px;top:0px;
       ">
@@ -168,4 +168,3 @@ class A4Lian extends Component {
 </div>`);
   }
 };
-export default A4Lian;

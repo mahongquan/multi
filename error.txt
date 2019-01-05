@@ -1,0 +1,2 @@
+chalk 自带的ansi-styles版本低，导致@babal/highlight出错。
+jsx有错误 prettier格式化时也可以显示出来。

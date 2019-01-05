@@ -3,6 +3,6 @@ window.myremote={
     path:require("path"),
     electron:require('electron'),
 };
-require("babel-register");
-require("babel-polyfill");
+require("@babel/register");
+require("@babel/polyfill");
 require("./index_local.js");

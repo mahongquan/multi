@@ -33,18 +33,18 @@ class App extends React.Component {
       begin_date:m1.format("YYYY-MM-DD"),
       end_date:m2.format("YYYY-MM-DD")
     }
-    var SerialPort = require("serialport");
-    const Readline = SerialPort.parsers.Readline;
-    var port = new SerialPort("COM1", {
-        baudRate: 1200,
-        dataBits: 7,
-        parity: 'odd',
-        stopBits: 1,
-      });
-    this.parser = port.pipe(new Readline({ delimiter: '\r\n' }));
+    // var SerialPort = require("serialport");
+    // const Readline = SerialPort.parsers.Readline;
+    // var port = new SerialPort("COM1", {
+    //     baudRate: 1200,
+    //     dataBits: 7,
+    //     parity: 'odd',
+    //     stopBits: 1,
+    //   });
+    // this.parser = port.pipe(new Readline({ delimiter: '\r\n' }));
   }
   componentDidMount=() => {
-    this.parser.on('data', this.log);
+    // this.parser.on('data', this.log);
     this.load_data();
   }
   log=(data)=>{

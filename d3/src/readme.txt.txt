@@ -1,1 +1,0 @@
-not react. just a jquery-3.1.0 app.

@@ -37,4 +37,3 @@ link("./","paper.css");
 App=require(module_name).default;
 let app=new App();
 ReactDOM.render(app, document.getElementById('root'));
-
