@@ -1,8 +1,0 @@
-node_modules
-__pycache__
-*.lock
-*.log
-build
-lib
-
-

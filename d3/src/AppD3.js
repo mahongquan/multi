@@ -3,13 +3,17 @@ import PropTypes from 'prop-types'
 import * as d3 from 'd3';
 import  d3Tip from 'd3-tip';
 class D3SimpleBarChart extends React.Component {
+    constructor(){
+        super();
+        this.chartRef=React.createRef();
+    }
     componentDidMount() {
-        const containerWidth = this.chartRef.parentElement.offsetWidth;
+        const containerWidth = this.chartRef.current.parentElement.offsetWidth;
         const data = this.props.data;
         const margin = { top: 80, right: 20, bottom: 30, left: 60 };
         const width = containerWidth - margin.left - margin.right;
         const height = 500 - margin.top - margin.bottom;     
-        let chart = d3.select(this.chartRef).attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom);  
+        let chart = d3.select(this.chartRef.current).attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom);  
 
         let x = d3.scaleBand().rangeRound([0, width]).padding(0.1).domain(data.map(function (d) { return d.letter; })); // 设置x轴
         let y = d3.scaleLinear().rangeRound([height, 0]).domain([0, d3.max(data, function (d) { return d.frequency; })]); // 设置y轴
@@ -109,7 +113,7 @@ class D3SimpleBarChart extends React.Component {
     render() {
         return (
             <div className="bar-chart--simple">
-                <svg ref={(r) => this.chartRef = r}></svg>
+                <svg ref={this.chartRef}></svg>
             </div>
         )
     }

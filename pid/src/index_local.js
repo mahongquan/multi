@@ -26,10 +26,6 @@ function getWhere() {
   return where;
 }
 let where = getWhere();
-let App = require('./PidSimulate.js').default;
-ReactDOM.render(
-  <App
-    data={[{ letter: '一', frequency: 0.1 }, { letter: '二', frequency: 0.2 }]}
-  />,
-  document.getElementById('root')
-);
+let App = require('./PidSimulate2').default;
+// let App = require('./Editor').default;
+ReactDOM.render(<App />, document.getElementById('root'));
