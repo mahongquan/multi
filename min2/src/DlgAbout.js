@@ -8,7 +8,11 @@ export default class App extends React.Component {
   };
   render = () => {
     return (
-      <Modal show={this.props.showModal} onClose={this.props.closeModal}>
+      <Modal
+        show={this.props.showModal}
+        onClose={this.props.closeModal}
+        onHide={this.props.closeModal}
+      >
         <Modal.Header>关于"browser1"</Modal.Header>
         <Modal.Body>
           <table>

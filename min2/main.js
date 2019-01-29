@@ -457,13 +457,6 @@ function createAppMenu () {
           }
         },
         {
-          label: l('appMenuReadingList'),
-          accelerator: undefined,
-          click: function (item, window) {
-            sendIPCToWindow(window, 'showReadingList')
-          }
-        },
-        {
           type: 'separator'
         },
         {
@@ -489,23 +482,6 @@ function createAppMenu () {
         },
         {
           type: 'separator'
-        },
-        {
-          label: l('appMenuFocusMode'),
-          accelerator: undefined,
-          type: 'checkbox',
-          checked: false,
-          click: function (item, window) {
-            if (isFocusMode) {
-              item.checked = false
-              isFocusMode = false
-              sendIPCToWindow(window, 'exitFocusMode')
-            } else {
-              item.checked = true
-              isFocusMode = true
-              sendIPCToWindow(window, 'enterFocusMode')
-            }
-          }
         },
         {
           label: l('appMenuFullScreen'),
@@ -1006,6 +982,7 @@ function downloadHandler (event, item, webContents) {
   } else {
     // send info to download manager
     sendIPCToWindow(mainWindow, 'download-info', {
+      url:itemURL,
       path: item.getSavePath(),
       name: item.getFilename(),
       status: 'progressing',

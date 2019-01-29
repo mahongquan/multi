@@ -1,14 +1,13 @@
 import React from 'react';
 import { Modal } from 'react-bootstrap';
-import data from './Data';
-var { shell } = window.require('electron'); //
 export default class App extends React.Component {
-  onClick = () => {
-    shell.openExternal(data.config.website);
-  };
   render = () => {
     return (
-      <Modal show={this.props.showModal} onClose={this.props.closeModal}>
+      <Modal
+        show={this.props.showModal}
+        onClose={this.props.closeModal}
+        onHide={this.props.closeModal}
+      >
         <Modal.Header>设置</Modal.Header>
         <Modal.Body>
           <div className="hero short-hero blue-gradient-background">

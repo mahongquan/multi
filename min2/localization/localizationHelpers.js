@@ -40,33 +40,33 @@ function l (stringId) {
   }
 }
 
-/* for static HTML pages
-insert a localized string into all elements with a [data-string] attribute
-set the correct attributes for all elements with a [data-label] attribute
- */
+// /* for static HTML pages
+// insert a localized string into all elements with a [data-string] attribute
+// set the correct attributes for all elements with a [data-label] attribute
+//  */
 
-if (typeof document !== 'undefined') {
-  document.querySelectorAll('[data-string]').forEach(function (el) {
-    var str = l(el.getAttribute('data-string'))
-    if (typeof str === 'string') {
-      el.textContent = str
-    } else if (str && str.unsafeHTML && el.hasAttribute('data-allowHTML')) {
-      el.innerHTML = str.unsafeHTML
-    }
-  })
-  document.querySelectorAll('[data-label]').forEach(function (el) {
-    var str = l(el.getAttribute('data-label'))
-    if (typeof str === 'string') {
-      el.setAttribute('title', str)
-      el.setAttribute('aria-label', str)
-    } else {
-      throw new Error('invalid data-label value: ' + str)
-    }
-  })
-}
-if (typeof window !== 'undefined') {
-  window.l = l
-  window.userLanguage = userLanguage
-  window.getCurrentLanguage = getCurrentLanguage
-}
+// if (typeof document !== 'undefined') {
+//   document.querySelectorAll('[data-string]').forEach(function (el) {
+//     var str = l(el.getAttribute('data-string'))
+//     if (typeof str === 'string') {
+//       el.textContent = str
+//     } else if (str && str.unsafeHTML && el.hasAttribute('data-allowHTML')) {
+//       el.innerHTML = str.unsafeHTML
+//     }
+//   })
+//   document.querySelectorAll('[data-label]').forEach(function (el) {
+//     var str = l(el.getAttribute('data-label'))
+//     if (typeof str === 'string') {
+//       el.setAttribute('title', str)
+//       el.setAttribute('aria-label', str)
+//     } else {
+//       throw new Error('invalid data-label value: ' + str)
+//     }
+//   })
+// }
+// if (typeof window !== 'undefined') {
+//   window.l = l
+//   window.userLanguage = userLanguage
+//   window.getCurrentLanguage = getCurrentLanguage
+// }
 module.exports={l:l,getCurrentLanguage:getCurrentLanguage,languages:languages};

@@ -1,17 +1,10 @@
 var electron = require('electron');
-// var browserUI = require('./browserUI.js');
-// const previewCache = require('./previewCache.js');
 var { myglobal } = require('./myglobal');
 var getView = electron.remote.getGlobal('getView');
 var urlParser = require('./util/urlParser.js');
 var { throttle } = require('./func.js');
-/* implements selecting webviews, switching between them, and creating new ones. */
-// var { windowIsMaximised } = require('./windowsCaptionButtons');
-// var placeholderImg = document.getElementById('webview-placeholder');
-
 var windowIsMaximized = false; // affects navbar height on Windows
 var windowIsFullscreen = false; // TODO track this for each individual webContents
-// let { goBackButton } = require('./navbar/goBackButton');
 function lazyRemoteObject(getObject) {
   var cachedItem = null;
   return new Proxy(
@@ -69,10 +62,6 @@ function captureCurrentTab(options) {
 }
 
 function updateBackButton() {
-  // if (!tabs.get(tabs.getSelected()).url) {
-  //   // goBackButton.disabled = true;
-  //   return;
-  // }
   myglobal.ui.updateBackButton();
 }
 
@@ -85,27 +74,6 @@ electron.remote.session.defaultSession.setPermissionRequestHandler(
 // called whenever a new page starts loading, or an in-page navigation occurs
 function onPageURLChange(tab, url) {
   myglobal.ui.onPageURLChange(url);
-  // if the page is an error page, the URL is really the value of the "url" query parameter
-  // if (url.startsWith(myglobal.webviews.internalPages.error)) {
-  //   url = new URLSearchParams(new URL(url).search).get('url');
-  // }
-
-  // if (
-  //   url.indexOf('https://') === 0 ||
-  //   url.indexOf('about:') === 0 ||
-  //   url.indexOf('chrome:') === 0 ||
-  //   url.indexOf('file://') === 0
-  // ) {
-  //   tabs.update(tab, {
-  //     secure: true,
-  //     url: url,
-  //   });
-  // } else {
-  //   tabs.update(tab, {
-  //     secure: false,
-  //     url: url,
-  //   });
-  // }
 }
 
 // called whenever the page finishes loading
@@ -443,13 +411,16 @@ myglobal.webviews.bindEvent('page-title-updated', function(
   title,
   explicitSet
 ) {
-  // var tab = myglobal.webviews.getTabFromContents(this);
-  // tabs.update(tab, {
-  //   title: title,
-  // });
-  // myglobal.tabBar.rerenderTab(tab);
+  myglobal.ui.updateTitle(title);
 });
-
+myglobal.webviews.bindEvent('page-favicon-updated', function(
+  e,
+  favicon,
+  explicitSet
+) {
+  // console.log(favicon);
+  myglobal.ui.updateFavicon(favicon[0]);
+});
 myglobal.webviews.bindEvent('did-fail-load', function(
   e,
   errorCode,
@@ -457,16 +428,7 @@ myglobal.webviews.bindEvent('did-fail-load', function(
   validatedURL,
   isMainFrame
 ) {
-  // if (errorCode && errorCode !== -3 && isMainFrame && validatedURL) {
-  //   browserUI.navigate(
-  //     myglobal.webviews.getTabFromContents(this),
-  //     myglobal.webviews.internalPages.error +
-  //       '?ec=' +
-  //       encodeURIComponent(errorCode) +
-  //       '&url=' +
-  //       encodeURIComponent(validatedURL)
-  //   );
-  // }
+  myglobal.ui.onFail(errorCode, errorDesc, validatedURL);
 });
 
 myglobal.webviews.bindEvent('crashed', function(e, isKilled) {
@@ -527,9 +489,9 @@ electron.ipcRenderer.on('view-electron.ipcRenderer', function(e, args) {
   });
 });
 
-setInterval(function() {
-  captureCurrentTab();
-}, 30000);
+// setInterval(function() {
+//   captureCurrentTab();
+// }, 30000);
 
 electron.ipcRenderer.on('captureData', function(e, data) {
   previewCache.set(data.id, data.url);
