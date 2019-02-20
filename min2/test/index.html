@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="shortcut icon" href="./favicon.png">
+    <title>A4 Print</title>
+    <style>
+      body{
+        background-color: #FFF;
+      }
+    </style>
+    <script type="text/javascript">
+      // require("./a.js");
+      function open1(){
+        console.log("open");
+        window.open("http://www.baidu.com")
+      }
+      function open2(){
+        window.open("./page2.html")
+      }
+    </script>
+  </head>
+  <body>
+    <div >hello  button</div>
+    <p>with script</p>
+    <a href="./page1.html">link</a>
+    <a href="./down.bin">download</a>
+    <button onclick="open1()">open baidu</button>
+    <button onclick="open2()">open page2 in new window</button>
+  </body>
+</html>

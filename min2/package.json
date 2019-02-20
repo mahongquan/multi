@@ -1,0 +1,29 @@
+{
+  "name": "min",
+  "productName": "Min",
+  "version": "1.8.0",
+  "main": "main.js",
+  "dependencies": {
+    "dexie": "^2.0.4",
+    "dragula": "^3.7.2",
+    "electron": "^4.0.1",
+    "mousetrap": "^1.6.2",
+    "pdfjs-dist": "2.0.943",
+    "string_score": "^0.1.22"
+  },
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "electron .",
+    "test": "node_modules/.bin/standard --verbose js/**/*.js main/*.js",
+    "watch": "node ./scripts/watch.js",
+    "buildMain": "node ./scripts/buildMain.js",
+    "buildBrowser": "node ./scripts/buildBrowser.js",
+    "buildPreload": "node ./scripts/buildPreload.js",
+    "build": "npm run buildMain && npm run buildBrowser && npm run buildPreload",
+    "updateFilters": "node ./ext/filterLists/updateEasylist.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mahongquan/min.git"
+  }
+}

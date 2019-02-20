@@ -1,7 +1,7 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import socket from './MyFs'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import socket from './MyFs';
 import {
   Button,
   Overlay,
@@ -11,7 +11,13 @@ import {
   Tooltip,
   OverlayTrigger,
 } from 'react-bootstrap';
-import { faArrowLeft,faArrowUp,faChevronRight,faThLarge,faThList } from '@fortawesome/free-solid-svg-icons'
+import {
+  faArrowLeft,
+  faArrowUp,
+  faChevronRight,
+  faThLarge,
+  faThList,
+} from '@fortawesome/free-solid-svg-icons';
 library.add(faArrowLeft);
 library.add(faArrowUp);
 library.add(faChevronRight);
@@ -135,6 +141,13 @@ class File extends React.Component {
   };
 }
 class Browser extends React.Component {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.root != this.props.root) {
+      // this.setState({newPackName:nextProps.contact_hetongbh});
+      socket.openfolder(nextProps.root);
+      this.loadFilesFromServer('.');
+    }
+  }
   channels_change = (event, value) => {
     console.log('auto_change');
     //this.setState({ yiqixinghao_value:value, auto_loading: false });
@@ -509,20 +522,21 @@ class Browser extends React.Component {
           </Tooltip>
         </Overlay>
         <div style={{ display: 'flex' }}>
-            <button>
-             <FontAwesomeIcon icon="arrow-left" onClick={this.onBack} />
-            </button>
-            <button>
-             <FontAwesomeIcon icon="arrow-up" disabled={this.state.isroot}
-                onClick={this.onParent} />
-            </button>
-          <button  ref="altViewSpan">
-            <FontAwesomeIcon icon={className} onClick={this.alternateView}/>
+          <button>
+            <FontAwesomeIcon icon="arrow-left" onClick={this.onBack} />
           </button>
           <button>
-           <FontAwesomeIcon 
-              onClick={this.rootclick}
-              icon="chevron-right" />
+            <FontAwesomeIcon
+              icon="arrow-up"
+              disabled={this.state.isroot}
+              onClick={this.onParent}
+            />
+          </button>
+          <button ref="altViewSpan">
+            <FontAwesomeIcon icon={className} onClick={this.alternateView} />
+          </button>
+          <button>
+            <FontAwesomeIcon onClick={this.rootclick} icon="chevron-right" />
           </button>
           {pathshow}
         </div>
