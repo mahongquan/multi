@@ -7,15 +7,16 @@ const BrowserWindow = electron.BrowserWindow
 //-----------------------------------------------------------------
 
 const {Menu, MenuItem, dialog, ipcMain }=electron;
-
-
+// const appdir="mario";
+// const appdir="parts/src";
+const appdir=".";
 //是否可以安全退出
 
 let safeExit = false;
 
 //-----------------------------------------------------------------
 
-
+process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = true
 
 // Keep a global reference of the window object, if you don't, the window will
 
@@ -52,13 +53,27 @@ const createWindow = () => {
         {
           label: 'HOME',
           accelerator: 'Ctrl+H',
-          click: (item, win) =>{win.loadURL(`file://${__dirname}/index.html`);},
+          click: (item, win) =>{win.loadURL(`file://${__dirname}/${appdir}/index.html`);},
+        },
+         {
+          label: 'Forward',
+          accelerator: 'Ctrl+F',
+          click: (item, win) =>{
+            win.webContents.goForward();
+          },
         },
         {
           label: 'BACK',
           accelerator: 'Ctrl+B',
           click: (item, win) =>{
-            win.webContents.send("goback");
+            win.webContents.goBack();
+          },
+        },
+        {
+          label: 'RELOAD',
+          accelerator: 'Ctrl+R',
+          click: (item, win) =>{
+            win.webContents.reload();
           },
         },
         {
@@ -96,7 +111,7 @@ const createWindow = () => {
   }
   // and load the index.html of the app.
 
-  mainWindow.loadURL(`file://${__dirname}/index.html`);
+  mainWindow.loadURL(`file://${__dirname}/${appdir}/index.html`);
 
 
 
