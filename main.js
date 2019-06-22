@@ -7,8 +7,8 @@ const BrowserWindow = electron.BrowserWindow
 //-----------------------------------------------------------------
 
 const {Menu, MenuItem, dialog, ipcMain }=electron;
-
-
+// const app_dir="pinshi"
+const app_dir="."
 //是否可以安全退出
 
 let safeExit = false;
@@ -37,6 +37,9 @@ const createWindow = () => {
     width: 800,
 
     height: 600,
+    webPreferences:{
+      nodeIntegration:true
+    }
 
   });
   //menu
@@ -52,13 +55,20 @@ const createWindow = () => {
         {
           label: 'HOME',
           accelerator: 'Ctrl+H',
-          click: (item, win) =>{win.loadURL(`file://${__dirname}/index.html`);},
+          click: (item, win) =>{win.loadURL(`file://${__dirname}/${app_dir}/index.html`);},
         },
         {
           label: 'BACK',
           accelerator: 'Ctrl+B',
           click: (item, win) =>{
-            win.webContents.send("goback");
+            win.webContents.goBack();
+          },
+        },
+        {
+          label: 'RELOAD',
+          accelerator: 'Ctrl+R',
+          click: (item, win) =>{
+            win.webContents.reload();
           },
         },
         {
@@ -96,7 +106,7 @@ const createWindow = () => {
   }
   // and load the index.html of the app.
 
-  mainWindow.loadURL(`file://${__dirname}/index.html`);
+  mainWindow.loadURL(`file://${__dirname}/${app_dir}/index.html`);
 
 
 
