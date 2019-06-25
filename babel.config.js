@@ -7,10 +7,11 @@ module.exports = function(api) {
       ['@babel/preset-env',{targets: { electron: '3.0' }}],
     ],
     plugins: [
+      ["@babel/plugin-proposal-decorators", { "legacy": true }],
       '@babel/plugin-syntax-jsx',
       '@babel/plugin-transform-react-jsx',
       '@babel/plugin-transform-react-display-name',
-      '@babel/plugin-proposal-class-properties',
+      ['@babel/plugin-proposal-class-properties', { "loose": true}],
       '@babel/plugin-transform-react-jsx-self',
       '@babel/plugin-transform-react-jsx-source',
       '@babel/plugin-transform-flow-strip-types',
