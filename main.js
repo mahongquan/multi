@@ -1,6 +1,7 @@
 const electron = require('electron')
 // Module to control application life.
 const app = electron.app
+const { session } = require('electron');
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 
@@ -26,7 +27,31 @@ let mainWindow;
 ipcMain.on('getpath', (event, arg) => {
     event.returnValue = __dirname;
 })
+ipcMain.on('setcookies', (event, arg) => {
+    setcookies(arg);
+})
 
+function setcookies(arg){
+  for(var i=0;i<arg.length;i++){
+    let cookie=arg[i];
+    session.defaultSession.cookies.set(cookie, (error) => {
+      if (error) console.error(error);
+    })
+  }
+  console.log("ok");
+}
+
+ipcMain.on('setcookie', (event, arg) => {
+    setcookie(arg);
+})
+
+function setcookie(arg){
+  const cookie = { url: arg.url, name: arg.name, value: arg.value};
+  session.defaultSession.cookies.set(cookie, (error) => {
+    if (error) console.error(error);
+  })
+  console.log("ok");
+}
 const createWindow = () => {
   console.log("createWindow");
 
