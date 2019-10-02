@@ -4,10 +4,11 @@ module.exports = function(api) {
   return {
     highlightCode:false,
     presets: [
-      ['@babel/preset-env',{targets: { electron: '3.0' }}],
+      ['@babel/preset-env',{targets: { electron: '5.0' }}],
     ],
     plugins: [
       ["@babel/plugin-proposal-decorators", { "legacy": true }],
+      '@babel/plugin-transform-modules-commonjs',
       '@babel/plugin-syntax-jsx',
       '@babel/plugin-transform-react-jsx',
       '@babel/plugin-transform-react-display-name',

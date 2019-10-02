@@ -325,7 +325,7 @@
 
 "@babel/helpers@^7.6.0":
   version "7.6.0"
-  resolved "https://registry.npm.taobao.org/@babel/helpers/download/@babel/helpers-7.6.0.tgz#21961d16c6a3c3ab597325c34c465c0887d31c6e"
+  resolved "https://registry.npm.taobao.org/@babel/helpers/download/@babel/helpers-7.6.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fhelpers%2Fdownload%2F%40babel%2Fhelpers-7.6.0.tgz#21961d16c6a3c3ab597325c34c465c0887d31c6e"
   integrity sha1-IZYdFsajw6tZcyXDTEZcCIfTHG4=
   dependencies:
     "@babel/template" "^7.6.0"
@@ -727,7 +727,7 @@
 
 "@babel/plugin-transform-modules-commonjs@^7.6.0":
   version "7.6.0"
-  resolved "https://registry.npm.taobao.org/@babel/plugin-transform-modules-commonjs/download/@babel/plugin-transform-modules-commonjs-7.6.0.tgz#39dfe957de4420445f1fcf88b68a2e4aa4515486"
+  resolved "https://registry.npm.taobao.org/@babel/plugin-transform-modules-commonjs/download/@babel/plugin-transform-modules-commonjs-7.6.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fplugin-transform-modules-commonjs%2Fdownload%2F%40babel%2Fplugin-transform-modules-commonjs-7.6.0.tgz#39dfe957de4420445f1fcf88b68a2e4aa4515486"
   integrity sha1-Od/pV95EIERfH8+ItoouSqRRVIY=
   dependencies:
     "@babel/helper-module-transforms" "^7.4.4"
