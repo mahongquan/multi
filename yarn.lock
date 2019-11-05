@@ -1605,11 +1605,7 @@
 
 "@types/node@^10.12.18":
   version "10.17.0"
-<<<<<<< HEAD
-  resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-10.17.0.tgz#537c61a1df699a8331c79dab2ccc2c8799873c66"
-=======
   resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-10.17.0.tgz?cache=0&sync_timestamp=1571938812856&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fnode%2Fdownload%2F%40types%2Fnode-10.17.0.tgz#537c61a1df699a8331c79dab2ccc2c8799873c66"
->>>>>>> 1a0f615b0e5a8a90823cc7d4a40797e6a20c9998
   integrity sha1-U3xhod9pmoMxx52rLMwsh5mHPGY=
 
 "@types/prop-types@*":
@@ -4141,7 +4137,7 @@ ejs@^2.6.2:
   resolved "https://registry.npm.taobao.org/ejs/download/ejs-2.7.1.tgz#5b5ab57f718b79d4aca9254457afecd36fa80228"
   integrity sha1-W1q1f3GLedSsqSVEV6/s02+oAig=
 
-electron-builder@^20.38.2:
+electron-builder@^20.44.4:
   version "20.44.4"
   resolved "https://registry.npm.taobao.org/electron-builder/download/electron-builder-20.44.4.tgz#c47981ddf486d582c0ae0f4d530c831010aacad7"
   integrity sha1-xHmB3fSG1YLArg9NUwyDEBCqytc=
@@ -4232,17 +4228,10 @@ electron-window-state@^5.0.3:
     jsonfile "^4.0.0"
     mkdirp "^0.5.1"
 
-<<<<<<< HEAD
 electron@^6.0.12:
   version "6.1.2"
   resolved "https://registry.npm.taobao.org/electron/download/electron-6.1.2.tgz#87ad84d9560a58c434140c70f459e97bc2dd25f5"
   integrity sha1-h62E2VYKWMQ0FAxw9Fnpe8LdJfU=
-=======
-electron@6.0.12:
-  version "6.0.12"
-  resolved "https://registry.npm.taobao.org/electron/download/electron-6.0.12.tgz#85bf0061e32f660256cfde95488f1cb75253bc94"
-  integrity sha1-hb8AYeMvZgJWz96VSI8ct1JTvJQ=
->>>>>>> 1a0f615b0e5a8a90823cc7d4a40797e6a20c9998
   dependencies:
     "@types/node" "^10.12.18"
     electron-download "^4.1.0"
@@ -4902,11 +4891,7 @@ fs-extra-p@^8.0.2:
 
 fs-extra@^4.0.1:
   version "4.0.3"
-<<<<<<< HEAD
-  resolved "https://registry.npm.taobao.org/fs-extra/download/fs-extra-4.0.3.tgz#0d852122e5bc5beb453fb028e9c0c9bf36340c94"
-=======
   resolved "https://registry.npm.taobao.org/fs-extra/download/fs-extra-4.0.3.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ffs-extra%2Fdownload%2Ffs-extra-4.0.3.tgz#0d852122e5bc5beb453fb028e9c0c9bf36340c94"
->>>>>>> 1a0f615b0e5a8a90823cc7d4a40797e6a20c9998
   integrity sha1-DYUhIuW8W+tFP7Ao6cDJvzY0DJQ=
   dependencies:
     graceful-fs "^4.1.2"
@@ -8507,11 +8492,7 @@ prepend-http@^2.0.0:
 
 pretty-bytes@^1.0.2:
   version "1.0.4"
-<<<<<<< HEAD
-  resolved "https://registry.npm.taobao.org/pretty-bytes/download/pretty-bytes-1.0.4.tgz#0a22e8210609ad35542f8c8d5d2159aff0751c84"
-=======
   resolved "https://registry.npm.taobao.org/pretty-bytes/download/pretty-bytes-1.0.4.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fpretty-bytes%2Fdownload%2Fpretty-bytes-1.0.4.tgz#0a22e8210609ad35542f8c8d5d2159aff0751c84"
->>>>>>> 1a0f615b0e5a8a90823cc7d4a40797e6a20c9998
   integrity sha1-CiLoIQYJrTVUL4yNXSFZr/B1HIQ=
   dependencies:
     get-stdin "^4.0.1"
