@@ -101,6 +101,7 @@ export default class ReactPaint extends Component {
       <div className={className} style={{width:this.props.width
         ,height:this.props.height,backgroundColor:"#ccc"}}>
         <canvas
+          id={this.props.id}
           ref={this.ref1}
           className={`${className}__canvas`}
 
