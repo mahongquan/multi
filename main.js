@@ -8,14 +8,8 @@ const BrowserWindow = electron.BrowserWindow
 //-----------------------------------------------------------------
 
 const {Menu, MenuItem, dialog, ipcMain }=electron;
-<<<<<<< HEAD
 // const app_dir="pinshi"
 const app_dir="."
-=======
-// const appdir="mario";
-// const appdir="parts/src";
-const appdir=".";
->>>>>>> refs/remotes/origin/master
 //是否可以安全退出
 
 let safeExit = false;
@@ -89,10 +83,7 @@ const createWindow = () => {
         {
           label: 'HOME',
           accelerator: 'Ctrl+H',
-<<<<<<< HEAD
           click: (item, win) =>{win.loadURL(`file://${__dirname}/${app_dir}/index.html`);},
-=======
-          click: (item, win) =>{win.loadURL(`file://${__dirname}/${appdir}/index.html`);},
         },
          {
           label: 'Forward',
@@ -100,7 +91,6 @@ const createWindow = () => {
           click: (item, win) =>{
             win.webContents.goForward();
           },
->>>>>>> refs/remotes/origin/master
         },
         {
           label: 'BACK',
@@ -151,11 +141,7 @@ const createWindow = () => {
   }
   // and load the index.html of the app.
 
-<<<<<<< HEAD
   mainWindow.loadURL(`file://${__dirname}/${app_dir}/index.html`);
-=======
-  mainWindow.loadURL(`file://${__dirname}/${appdir}/index.html`);
->>>>>>> refs/remotes/origin/master
 
 
 
