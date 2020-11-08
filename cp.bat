@@ -1,1 +1,1 @@
-python native.py
+python native.py %1
