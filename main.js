@@ -1,6 +1,7 @@
 const electron = require('electron')
 // Module to control application life.
 const app = electron.app
+app.allowRendererProcessReuse = false;
 const { session } = require('electron');
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
@@ -8,9 +9,8 @@ const BrowserWindow = electron.BrowserWindow
 //-----------------------------------------------------------------
 
 const {Menu, MenuItem, dialog, ipcMain }=electron;
-// const appdir="mario";
-// const appdir="parts/src";
-const appdir=".";
+// const app_dir="pinshi"
+const app_dir="."
 //是否可以安全退出
 
 let safeExit = false;
@@ -66,6 +66,9 @@ const createWindow = () => {
     width: 800,
 
     height: 600,
+    webPreferences:{
+      nodeIntegration:true
+    }
 
   });
   //menu
@@ -81,7 +84,7 @@ const createWindow = () => {
         {
           label: 'HOME',
           accelerator: 'Ctrl+H',
-          click: (item, win) =>{win.loadURL(`file://${__dirname}/${appdir}/index.html`);},
+          click: (item, win) =>{win.loadURL(`file://${__dirname}/${app_dir}/index.html`);},
         },
          {
           label: 'Forward',
@@ -139,7 +142,7 @@ const createWindow = () => {
   }
   // and load the index.html of the app.
 
-  mainWindow.loadURL(`file://${__dirname}/${appdir}/index.html`);
+  mainWindow.loadURL(`file://${__dirname}/${app_dir}/index.html`);
 
 
 

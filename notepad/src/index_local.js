@@ -24,5 +24,5 @@ let where = getWhere();
 // link(where, 'node_modules/bootstrap/dist/css/bootstrap.min.css');
 // link(where, 'node_modules/bootstrap/dist/css/bootstrap-theme.min.css');
 link('./', 'animate.min.css');
-let App = require('./Editor').default;
+let App = require('./editor').default;
 ReactDOM.render(<App />, document.getElementById('root'));
