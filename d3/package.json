@@ -21,16 +21,9 @@
   ],
   "author": "GitHub",
   "license": "CC0-1.0",
-  "devDependencies": {
-    "brace": "^0.11.1",
-    "electron": "~1.8.4",
-    "prettier": "1.12.1",
-    "react": "^16.3.2",
-    "react-ace": "^5.10.0",
-    "react-dom": "^16.3.2",
-    "react-scripts": "^1.1.4"
-  },
+  "devDependencies": {},
   "dependencies": {
-    "react-split-pane": "^0.1.77"
+    "d3": "^6.2.0",
+    "d3-tip": "^0.9.1"
   }
 }
