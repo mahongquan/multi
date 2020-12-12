@@ -20,7 +20,7 @@
 		"isomorphic-unfetch": "^3.1.0",
 		"jointjs": "^2.0.1",
 		"jszip": "3.2.2",
-		"lodash": "4.17.15",
+		"lodash": "4.17.19",
 		"lodash.bindall": "^4.4.0",
 		"lodash.clonedeep": "^4.5.0",
 		"lodash.debounce": "^4.0.8",
