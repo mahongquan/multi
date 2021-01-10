@@ -1,0 +1,48 @@
+{
+  "name": "A4_Print",
+  "description": "Electron + Create React App + Electron Builder",
+  "version": "0.1.1",
+  "private": true,
+  "author": {
+    "name": "mahongquan",
+    "email": "mahongquan@sina.com",
+    "url": "https://your-website.com"
+  },
+  "build": {
+    "asar": "false",
+    "appId": "com.my-website.my-app",
+    "productName": "A4_Print",
+    "copyright": "Copyright © 2019 ${author}",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "dependencies": {
+    "sheetjs": "latest",
+    "xlsx": "^0.16.9"
+  },
+  "homepage": "./",
+  "main": "public/electron.js",
+  "scripts": {
+    "local": "node_modules/.bin/electron . --local",
+    "start": "node_modules/.bin/rescripts start",
+    "build": "node_modules/.bin/rescripts build",
+    "test": "node_modules/.bin/rescripts test",
+    "eject": "node_modules/.bin/react-scripts eject",
+    "preelectron-pack": "yarn build",
+    "electron-pack": "build "
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
