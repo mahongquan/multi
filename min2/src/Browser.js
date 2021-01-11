@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import DlgAbout from './DlgAbout';
 import DlgSettings from './DlgSettings';
-import DlgFail from './DlgFail';
-import DlgDownload from './DlgDownload'
+// import DlgFail from './DlgFail';
+// import DlgDownload from './DlgDownload'
 import data from './Data';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -401,25 +401,6 @@ class Browser extends Component {
             this.setState({ show_settings: false });
           }}
         />
-        <DlgFail
-          errorCode={this.state.errorCode}
-          errorDesc={this.state.errorDesc}
-          validatedURL={this.state.validatedURL}
-          showModal={this.state.show_fail}
-          closeModal={() => {
-            this.show_view();
-            this.setState({ show_fail: false });
-          }}
-        />
-        <DlgDownload
-          info={this.state.download_info}
-          showModal={this.state.show_download}
-          closeModal={() => {
-            this.show_view();
-            this.setState({ show_download: false });
-          }}
-        />
-
       </div>
     );
   }
