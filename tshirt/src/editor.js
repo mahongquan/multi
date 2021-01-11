@@ -1,5 +1,4 @@
 import React from 'react';
-import sprintf from 'sprintf';
 import {
   Navbar,
   Nav,
@@ -11,7 +10,7 @@ import {
 } from 'react-bootstrap';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Colors from './Colors';
-
+var sprintf = require('sprintf-js').sprintf
 let canvas;
 var tshirts = new Array(); //prototype: [{style:'x',color:'white',front:'a',back:'b',price:{tshirt:'12.95',frontPrint:'4.99',backPrint:'4.99',total:'22.47'}}]
 var a;
