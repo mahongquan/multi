@@ -48,6 +48,7 @@
 		"moment-timezone": "latest",
 		"phaser": "latest",
 		"proptypes": "latest",
+		    "react": "latest",
 		"react-ace": "latest",
 		"react-addons-shallow-compare": "latest",
 		"react-autosuggest": "latest",
