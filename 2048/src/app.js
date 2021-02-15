@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+var _=require("lodash");
 var rotateLeft = function(matrix) {
   var rows = matrix.length;
   var columns = matrix[0].length;
@@ -155,7 +156,7 @@ class Board {
       this.addRandomTile();
     }
     this.setPositions();
-    return this;
+    return _.clone(this);
   }
 
   clearOldTiles() {
@@ -197,45 +198,44 @@ class Board {
     return !canMove;
   }
 }
+var startX,startY;
+export default function BoardView(props){
+  const [state,setState]=React.useState(new Board());
 
-export default class BoardView extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { board: new Board() };
+  const restartGame=()=>{
+    setState(new Board() );
   }
-  restartGame() {
-    this.setState({ board: new Board() });
-  }
-  handleKeyDown(event) {
-    if (this.state.board.hasWon()) {
+  const handleKeyDown=(event)=>{
+    if (state.hasWon()) {
       return;
     }
     if (event.keyCode >= 37 && event.keyCode <= 40) {
       event.preventDefault();
       var direction = event.keyCode - 37;
-      this.setState({ board: this.state.board.move(direction) });
+      setState( state.move(direction));
     }
   }
-  handleTouchStart(event) {
-    if (this.state.board.hasWon()) {
+
+  const handleTouchStart=(event)=>{
+    if (state.hasWon()) {
       return;
     }
     if (event.touches.length != 1) {
       return;
     }
-    this.startX = event.touches[0].screenX;
-    this.startY = event.touches[0].screenY;
+    startX = event.touches[0].screenX;
+    startY = event.touches[0].screenY;
     event.preventDefault();
   }
-  handleTouchEnd(event) {
-    if (this.state.board.hasWon()) {
+  const handleTouchEnd=(event)=>{
+    if (state.hasWon()) {
       return;
     }
     if (event.changedTouches.length != 1) {
       return;
     }
-    var deltaX = event.changedTouches[0].screenX - this.startX;
-    var deltaY = event.changedTouches[0].screenY - this.startY;
+    var deltaX = event.changedTouches[0].screenX - startX;
+    var deltaY = event.changedTouches[0].screenY - startY;
     var direction = -1;
     if (Math.abs(deltaX) > 3 * Math.abs(deltaY) && Math.abs(deltaX) > 30) {
       direction = deltaX > 0 ? 2 : 0;
@@ -246,69 +246,72 @@ export default class BoardView extends React.Component {
       direction = deltaY > 0 ? 3 : 1;
     }
     if (direction != -1) {
-      this.setState({ board: this.state.board.move(direction) });
+      setState(state.move(direction));
     }
   }
-  componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyDown.bind(this));
-  }
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleKeyDown.bind(this));
-  }
-  render() {
-    var cells = this.state.board.cells.map((row, rowIndex) => {
-      return (
-        <div key={rowIndex}>
-          {row.map((_, columnIndex) => (
-            <Cell key={rowIndex * Board.size + columnIndex} />
-          ))}
-        </div>
-      );
-    });
-    var tiles = this.state.board.tiles
+  // const componentDidMount=()=>{
+  //   window.addEventListener('keydown', handleKeyDown);
+  // }
+  // const componentWillUnmount=()=>{
+  //   window.removeEventListener('keydown', handleKeyDown);
+  // }
+  React.useEffect(() => {
+    console.log("add")
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      console.log("remove");
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+    console.log("render==============================");
+    console.log(state);
+    // var cells = this.state.board.cells.map((row, rowIndex) => {
+    //   return (
+    //     <div key={rowIndex}>
+    //       {row.map((_, columnIndex) => (
+    //         <Cell key={rowIndex * Board.size + columnIndex} />
+    //       ))}
+    //     </div>
+    //   );
+    // });
+    var tiles = state.tiles
       .filter(tile => tile.value != 0)
       .map(tile => <TileView tile={tile} key={tile.id} />);
     return (
       <div
         className="board"
-        onTouchStart={this.handleTouchStart.bind(this)}
-        onTouchEnd={this.handleTouchEnd.bind(this)}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
         tabIndex="1"
       >
-        {cells}
+        {
+          //cells
+        }
         {tiles}
         <GameEndOverlay
-          board={this.state.board}
-          onRestart={this.restartGame.bind(this)}
+          board={state}
+          onRestart={restartGame}
         />
       </div>
     );
-  }
 }
-
-class Cell extends React.Component {
-  shouldComponentUpdate() {
-    return false;
-  }
-  render() {
-    return <span className="cell">{''}</span>;
-  }
+const Cell=function(){
+ return <span className="cell">{''}</span>;
 }
-
-class TileView extends React.Component {
-  shouldComponentUpdate(nextProps) {
-    if (this.props.tile != nextProps.tile) {
-      return true;
-    }
-    if (!nextProps.tile.hasMoved() && !nextProps.tile.isNew()) {
-      return false;
-    }
-    return true;
-  }
-  render() {
-    var tile = this.props.tile;
+const TileView=function(props){
+  // shouldComponentUpdate(nextProps) {
+  //   if (this.props.tile != nextProps.tile) {
+  //     return true;
+  //   }
+  //   if (!nextProps.tile.hasMoved() && !nextProps.tile.isNew()) {
+  //     return false;
+  //   }
+  //   return true;
+  // }
+    var tile = props.tile;
     var classArray = ['tile'];
-    classArray.push('tile' + this.props.tile.value);
+    classArray.push('tile' + props.tile.value);
     if (!tile.mergedInto) {
       classArray.push('position_' + tile.row + '_' + tile.column);
     }
@@ -327,14 +330,12 @@ class TileView extends React.Component {
     }
     var classes = classArray.join(' ');
     return <span className={classes}>{tile.value}</span>;
-  }
 }
-
-var GameEndOverlay = ({ board, onRestart }) => {
+const GameEndOverlay = (props) => {
   var contents = '';
-  if (board.hasWon()) {
+  if (props.board.hasWon()) {
     contents = 'Good Job!';
-  } else if (board.hasLost()) {
+  } else if (props.board.hasLost()) {
     contents = 'Game Over';
   }
   if (!contents) {
@@ -343,7 +344,7 @@ var GameEndOverlay = ({ board, onRestart }) => {
   return (
     <div className="overlay">
       <p className="message">{contents}</p>
-      <button className="tryAgain" onClick={onRestart} onTouchEnd={onRestart}>
+      <button className="tryAgain" onClick={props.onRestart} onTouchEnd={props.onRestart}>
         Try again
       </button>
     </div>

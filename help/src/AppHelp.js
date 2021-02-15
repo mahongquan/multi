@@ -105,8 +105,7 @@ let chapters = [chapter1, chapter2, chapter3];
 for (var i = 0; i < 50; i++) {
   chapters.push(new Chapter('id' + i, 'title' + i, <div>{i}</div>));
 }
-export default class Root extends Component {
-  render() {
+export default function Root(){
     const mulu = chapters.map((chapter, key) => {
       return chapter.mulu();
     });
@@ -180,5 +179,4 @@ export default class Root extends Component {
         </div>
       </div>
     );
-  }
 }
