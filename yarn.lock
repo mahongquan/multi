@@ -2163,7 +2163,7 @@ csv-stringify@latest:
   resolved "https://registry.npm.taobao.org/csv-stringify/download/csv-stringify-5.6.0.tgz#3dcde51da7561f5052220f1847bfd4db7618fcfa"
   integrity sha1-Pc3lHadWH1BSIg8YR7/U23YY/Po=
 
-dagre@~0.8.4:
+dagre@~0.8.5:
   version "0.8.5"
   resolved "https://registry.npm.taobao.org/dagre/download/dagre-0.8.5.tgz#ba30b0055dac12b6c1fcc247817442777d06afee"
   integrity sha1-ujCwBV2sErbB/MJHgXRCd30Gr+4=
@@ -2812,7 +2812,7 @@ graceful-fs@^4.1.6, graceful-fs@^4.2.0:
   resolved "https://registry.npm.taobao.org/graceful-fs/download/graceful-fs-4.2.6.tgz#ff040b2b0853b23c3d31027523706f1885d76bee"
   integrity sha1-/wQLKwhTsjw9MQJ1I3BvGIXXa+4=
 
-graphlib@^2.1.8, graphlib@~2.1.7:
+graphlib@^2.1.8, graphlib@~2.1.8:
   version "2.1.8"
   resolved "https://registry.npm.taobao.org/graphlib/download/graphlib-2.1.8.tgz#5761d414737870084c92ec7b5dbcb0592c9d35da"
   integrity sha1-V2HUFHN4cAhMkux7XbywWSydNdo=
@@ -3117,17 +3117,17 @@ isomorphic-unfetch@latest:
     unfetch "^4.2.0"
 
 jointjs@latest:
-  version "3.2.0"
-  resolved "https://registry.npm.taobao.org/jointjs/download/jointjs-3.2.0.tgz#07441151a9541926140a832c73fa2f5689927ee6"
-  integrity sha1-B0QRUalUGSYUCoMsc/ovVomSfuY=
+  version "3.3.1"
+  resolved "https://registry.npm.taobao.org/jointjs/download/jointjs-3.3.1.tgz#9f1074d9803b8d4fe0af972f189184669c1d3483"
+  integrity sha1-nxB02YA7jU/gr5cvGJGEZpwdNIM=
   dependencies:
     backbone "~1.4.0"
-    dagre "~0.8.4"
-    graphlib "~2.1.7"
-    jquery "~3.5.0"
-    lodash "~4.17.14"
+    dagre "~0.8.5"
+    graphlib "~2.1.8"
+    jquery "~3.5.1"
+    lodash "~4.17.20"
 
-jquery@^3.4.0, jquery@~3.5.0:
+jquery@^3.4.0, jquery@~3.5.1:
   version "3.5.1"
   resolved "https://registry.npm.taobao.org/jquery/download/jquery-3.5.1.tgz#d7b4d08e1bfdb86ad2f1a3d039ea17304717abb5"
   integrity sha1-17TQjhv9uGrS8aPQOeoXMEcXq7U=
@@ -3378,7 +3378,12 @@ lodash.union@latest:
   resolved "https://registry.npm.taobao.org/lodash.union/download/lodash.union-4.6.0.tgz#48bb5088409f16f1821666641c44dd1aaae3cd88"
   integrity sha1-SLtQiECfFvGCFmZkHETdGqrjzYg=
 
-lodash@^4.0.1, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.4, lodash@^4.6.1, lodash@latest, lodash@~4.17.14:
+lodash@^4.0.1, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.4, lodash@^4.6.1, lodash@~4.17.20:
+  version "4.17.21"
+  resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw=
+
+lodash@latest:
   version "4.17.20"
   resolved "https://registry.npm.taobao.org/lodash/download/lodash-4.17.20.tgz?cache=0&sync_timestamp=1602337231142&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Flodash%2Fdownload%2Flodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha1-tEqbYpe8tpjxxRo1RaKzs2jVnFI=
