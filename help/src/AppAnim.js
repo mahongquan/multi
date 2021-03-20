@@ -1,77 +1,11 @@
+/** @jsx jsx */;
+import {ClassNames, css, jsx } from '@emotion/react'
 import React, { Component } from 'react';
-//     <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-// <script>
-//   function testAnim(x) {
-//     $('#animationSandbox').removeClass().addClass(x + ' animated')
-//.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-//       $(this).removeClass();
-//     });
-//   };
-
-//   $(document).ready(function(){
-//     $('.js--triggerAnimation').click(function(e){
-//       e.preventDefault();
-//       var anim = $('.js--animations').val();
-//       testAnim(anim);
-//     });
-
-//     $('.js--animations').change(function(){
-//       var anim = $(this).val();
-//       testAnim(anim);
-//     });
-//   });
-export default class Root extends Component {
-  state = { selectValue: 'bounce' };
-  updateValue = e => {
-    //console.log(e.target.value);
-    this.setState({
-      selectValue: e.target.value + ' animated',
-    });
-    setTimeout(this.check, 1000);
-  };
-  componentDidMount = () => {};
-  animationEnd = el => {
-    var animations = {
-      animation: 'animationend',
-      OAnimation: 'oAnimationEnd',
-      MozAnimation: 'mozAnimationEnd',
-      WebkitAnimation: 'webkitAnimationEnd',
-    };
-
-    for (var t in animations) {
-      if (el.style[t] !== undefined) {
-        return animations[t];
-      }
-    }
-    return;
-  };
-
-  check = () => {
-    if (this.animationEnd(this.refs.contactedit)) {
-      console.log('end');
-      this.setState({ selectValue: '' });
-    } else {
-      setTimeout(this.check, 1000);
-    }
-  };
-  render() {
-    console.log('render');
-    console.log(this.state);
-    return (
-      <div>
-        <style jsx="true">
-          {`
-            /*-----------------------------------*\
-  $RESET
-\*-----------------------------------*/
-
+const styles=css`
             body {
               overflow-x: hidden;
             }
-
-            *,
-            :before,
-            :after {
+            *,:before,:after {
               margin: 0;
               padding: 0;
               position: relative;
@@ -79,11 +13,7 @@ export default class Root extends Component {
               -moz-box-sizing: border-box;
               box-sizing: border-box;
             }
-
-            input,
-            select,
-            button,
-            textarea {
+            input,select, button,textarea {
               -webkit-appearance: none;
               -moz-appearance: none;
               appearance: none;
@@ -91,25 +21,16 @@ export default class Root extends Component {
               font: inherit;
               color: inherit;
             }
-
-            /*-----------------------------------*\
-  $OBJECTS
-\*-----------------------------------*/
-
-            .butt,
-            .input {
+            .butt, .input {
               padding: 0.75rem;
               margin: 0.375rem;
 
               background-color: transparent;
               border-radius: 4px;
             }
-
-            .butt:focus,
-            .input:focus {
+            .butt:focus,.input:focus {
               outline: none;
             }
-
             .butt {
               border: 2px solid #f35626;
               line-height: 1.375;
@@ -139,13 +60,7 @@ export default class Root extends Component {
               background-size: 1.5rem 1rem;
               background-position: right center;
             }
-
-            /*-----------------------------------*\
-  $TYPOGRAPHY
-\*-----------------------------------*/
-
-            h1,
-            .alpha {
+            h1,.alpha {
               margin-bottom: 1.5rem;
 
               font-size: 3rem;
@@ -154,8 +69,7 @@ export default class Root extends Component {
               letter-spacing: -0.05em;
             }
 
-            h2,
-            .beta {
+            h2, .beta {
               margin-bottom: 0.75rem;
 
               font-weight: 400;
@@ -207,11 +121,6 @@ export default class Root extends Component {
             a:hover {
               color: #f35626;
             }
-
-            /*-----------------------------------*\
-  $LAYOUT
-\*-----------------------------------*/
-
             .wrap {
               max-width: 38rem;
               margin: 0 auto;
@@ -228,11 +137,6 @@ export default class Root extends Component {
             .spit {
               padding: 0.375rem;
             }
-
-            /*-----------------------------------*\
-  $BASE
-\*-----------------------------------*/
-
             html {
               font: 100%/1.5 'Roboto', Verdana, sans-serif;
               color: #3d464d;
@@ -265,11 +169,6 @@ export default class Root extends Component {
                 max-width: 38rem;
               }
             }
-
-            /*-----------------------------------*\
-  $HEADER
-\*-----------------------------------*/
-
             .site__header {
               -webkit-animation: bounceInUp 1s;
             }
@@ -295,11 +194,6 @@ export default class Root extends Component {
               -webkit-animation: bounceInUp 1s;
               -webkit-animation-delay: 0.1s;
             }
-
-            /*-----------------------------------*\
-  $ANIMATIONS
-\*-----------------------------------*/
-
             @-webkit-keyframes hue {
               from {
                 -webkit-filter: hue-rotate(0deg);
@@ -309,8 +203,46 @@ export default class Root extends Component {
                 -webkit-filter: hue-rotate(-360deg);
               }
             }
-          `}{' '}
-        </style>
+`
+export default class Root extends Component {
+  state = { selectValue: 'bounce' };
+  updateValue = e => {
+    //console.log(e.target.value);
+    this.setState({
+      selectValue: e.target.value + ' animated',
+    });
+    setTimeout(this.check, 1000);
+  };
+  componentDidMount = () => {};
+  animationEnd = el => {
+    var animations = {
+      animation: 'animationend',
+      OAnimation: 'oAnimationEnd',
+      MozAnimation: 'mozAnimationEnd',
+      WebkitAnimation: 'webkitAnimationEnd',
+    };
+
+    for (var t in animations) {
+      if (el.style[t] !== undefined) {
+        return animations[t];
+      }
+    }
+    return;
+  };
+
+  check = () => {
+    if (this.animationEnd(this.refs.contactedit)) {
+      console.log('end');
+      this.setState({ selectValue: '' });
+    } else {
+      setTimeout(this.check, 1000);
+    }
+  };
+  render() {
+    console.log('render');
+    console.log(this.state);
+    return (
+      <div css={styles}>
         <header className="site__header island">
           <div className="wrap">
             <span

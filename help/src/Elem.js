@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled'
 import { Link } from 'react-router-dom';
 export const Example = styled.div`
   /* all declarations will be prefixed */
@@ -167,7 +167,7 @@ const EndLabel = styled.span`
   right: 0;
   bottom: 0;
 `;
-export class Div extends Component<Props> {
+export class Div extends Component {
   render() {
     const { css, children, ...other } = this.props;
     let Element = styled('div')`
@@ -176,7 +176,7 @@ export class Div extends Component<Props> {
     return <Element {...other}>{children}</Element>;
   }
 }
-export class Tag extends Component<Props> {
+export class Tag extends Component {
   static defaultProps = {
     name: 'div',
   };
@@ -189,7 +189,7 @@ export class Tag extends Component<Props> {
   }
 }
 
-export default class Elem extends Component<Props> {
+export default class Elem extends Component {
   static defaultProps = {
     color: '#6AC5AC',
     tag: 'div',

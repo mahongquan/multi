@@ -22,8 +22,7 @@
     }
   },
   "dependencies": {
-    "sheetjs": "latest",
-    "xlsx": "^0.16.9"
+    "xlsx": "latest"
   },
   "homepage": "./",
   "main": "public/electron.js",

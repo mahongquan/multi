@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-export default class EasingV extends Component<Props> {
+export default class EasingV extends Component {
   render() {
     return (
       <div className="easing-variables" style={{ color: '#fff' }}>

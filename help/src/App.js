@@ -88,7 +88,7 @@ const chapter2 = new Chapter(
 const chapter3 = new Chapter('chapter3', 'hello', <div>I am here</div>);
 const chapters = [chapter1, chapter2, chapter3];
 
-export default class Root extends Component<Props> {
+export default class Root extends Component {
   render() {
     const mulu = chapters.map((chapter, key) => {
       return chapter.mulu();

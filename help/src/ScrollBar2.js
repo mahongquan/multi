@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled'
 import { Tag } from './Elem';
 import Ace from './Ace';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -51,7 +51,7 @@ const css = `
 }
 
 `;
-export default class Root extends Component<Props> {
+export default class Root extends Component {
   state = { css: css };
   cssChange = newvalue => {
     this.setState({ css: newvalue });

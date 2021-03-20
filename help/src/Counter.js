@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-export default class Counter extends Component<Props> {
+export default class Counter extends Component {
   render() {
     return (
       <ul>

@@ -8,34 +8,21 @@ import AppFlex from './AppFlex';
 import AppAnim from './AppAnim';
 import Home from './Home';
 import Ace from './Ace';
-import Customization from './Customization';
+// import Customization from './Customization';
 import {
-  Router,
   Redirect,
-  BrowserRouter,
+  Router,
   Route,
   Switch,
   Link,
 } from 'react-router-dom';
-var { ipcRenderer } = require('electron'); //
-
-var createHashHistory=require("history").createHashHistory;
-const history = createHashHistory({
-  hashType: 'slash', // the default
-});
-export default class Root extends Component<Props> {
-  constructor() {
-    super();
-    ipcRenderer.on('goback', () => {
-      console.log(history);
-      history.goBack();
-    });
-  }
+let createHistory= require("history").createMemoryHistory;
+const history = createHistory();
+export default class Root extends Component {
   render() {
     return (
       <Router history={history}>
         <Switch>
-          <Route path="/context" component={Customization} />
           <Route path="/ace" component={Ace} />
           <Route path="/home" component={Home} />
           <Route path="/app2" component={App2} />

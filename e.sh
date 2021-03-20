@@ -1,0 +1,1 @@
+esbuild --define:process.env.NODE_ENV=\"development\" --sourcemap --bundle --watch ./indexRouter.js --outfile=./dist/bundle.js --loader:.js=jsx

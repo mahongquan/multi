@@ -14,7 +14,7 @@ import DonutSpinner from './DonutSpinner';
 import EasingV from './EasingV';
 import HeightTransition from './HeightTransition';
 import AutosizeInput from 'react-input-autosize';
-export default class Root extends Component<Props> {
+export default class Root extends Component {
   state = { value1: '' };
   updateInputValue = e => {
     this.setState({ value1: e.target.value });

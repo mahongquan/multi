@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './loader.css';
 
-export default class Root extends Component<Props> {
+export default class Root extends Component {
   render() {
     return (
       <div id="bouncing-loader">

@@ -30,7 +30,7 @@ var styles = {
   },
 }; // @related-file ./loader.css
 
-export default class Loader2 extends Component<Props> {
+export default class Loader2 extends Component {
   render() {
     return (
       <div style={{ ...styles['#bouncing-loader'] }}>

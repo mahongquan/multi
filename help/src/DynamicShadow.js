@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-export default class dynamicShadow extends Component<Props> {
+export default class dynamicShadow extends Component {
   render() {
     return (
       <div className="dynamic-shadow">

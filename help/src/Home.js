@@ -6,8 +6,6 @@ export default class Root extends Component {
       <div>
         <Link to="/help">help</Link>
         <div />
-        <Link to="/context">contextmenu</Link>
-        <div />
         <Link to="/test">test</Link>
         <div />
         <Link to="/app2">app2</Link>

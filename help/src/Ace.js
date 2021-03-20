@@ -3,7 +3,7 @@ import AceEditor from 'react-ace';
 import 'brace/mode/css';
 import 'brace/theme/github';
 const d = new Date();
-export default class Root extends Component<Props> {
+export default class Root extends Component {
   constructor() {
     super();
     this.state = {

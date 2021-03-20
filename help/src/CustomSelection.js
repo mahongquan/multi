@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-export default class Root extends Component<Props> {
+export default class Root extends Component {
   render() {
     return (
       <p className="custom-text-selection">

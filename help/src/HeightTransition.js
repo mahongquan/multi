@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-export default class HeightTransition extends Component<Props> {
+export default class HeightTransition extends Component {
   render() {
     //     var el = document.querySelector('.el')
     // var height = el.scrollHeight
