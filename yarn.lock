@@ -3514,9 +3514,9 @@ mobx@latest:
   integrity sha1-j8PjYpozRviv3fW9lUQRl0dE2tE=
 
 moment-timezone@^0.5.31, moment-timezone@latest:
-  version "0.5.32"
-  resolved "https://registry.npm.taobao.org/moment-timezone/download/moment-timezone-0.5.32.tgz?cache=0&sync_timestamp=1605362236711&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmoment-timezone%2Fdownload%2Fmoment-timezone-0.5.32.tgz#db7677cc3cc680fd30303ebd90b0da1ca0dfecc2"
-  integrity sha1-23Z3zDzGgP0wMD69kLDaHKDf7MI=
+  version "0.5.37"
+  resolved "https://registry.npmmirror.com/moment-timezone/-/moment-timezone-0.5.37.tgz#adf97f719c4e458fdb12e2b4e87b8bec9f4eef1e"
+  integrity sha512-uEDzDNFhfaywRl+vwXxffjjq1q0Vzr+fcQpQ1bU0kbzorfS7zVtZnCnGc8mhWmF39d4g4YriF6kwA75mJKE/Zg==
   dependencies:
     moment ">= 2.9.0"
 
